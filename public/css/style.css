@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+}
+
+.header{
+    display: flex;
+}
+
+.logo{
+    width: 30%;
+    height: 30%;
+    margin-left: 10px;
+}
+
+.headerNav{
+    display: flex;
+    margin: auto;
+    margin-left: 20%;
+}
+
+header nav a{
+    color: black;
+    font-family: 'Overlock Bold 700', cursive;
+    font-size: 24px;
+    padding: 10px;
+    margin: 2px;
+}
+
+.aId{
+    color: #b308cf;
+    font-family: 'Overlock Black 900', cursive;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.navBarMenu{
+    background: #d3caca;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+}
+
+.navBarMenu a {
+    color: black;
+    font-family: 'Overlock SC', cursive;
+    font-size: 40px;
+    padding: auto;
+    margin: auto;
+}
+
+a {
+    text-decoration: none!important;
+}
+
+.imgAccueil{
+    width : "100px";
+    height: "100px" ;
+}
+
+.main{
+    background: #e7e1e1;
+}
+
+.main img{
+    width: 100%;
+    height: auto;
+}
+
+.main{
+
+}
+
+.footer{
+    background: #4e3452;
+}

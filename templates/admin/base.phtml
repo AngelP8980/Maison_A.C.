@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison A.C.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/8475ba8bc0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&family=Overlock:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="img/logo.png" alt="Logo Maison A.C." class="logo">
+
+        <!-- NavBar -->
+        <!-- MODE CONNECTE -->
+        <nav class="headerNav">
+        <?php if (isConnected()): ?>
+            <a href="/logout">
+            Déconnexion
+            </a>
+        <?php else: ?>
+            <!-- MODE NON CONNECTE -->
+            <a href="/signup">
+                Créer un compte
+            </a>
+            <a href="/login" class="aId">
+                S'identifier
+            </a>
+        <?php endif; ?>
+            <a href="/">Panier</a>
+            <a href="/">
+                <i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
+        </nav>
+    </header>
+
+    <!-- NavBar du menu -->
+    <nav class="navBarMenu">
+        <a href="/">Catalogue</a>
+        <a href="/">La Maison</a>
+        <a href="/">Contact</a>
+    </nav>
+    <!-- Main -->
+    <main class="main">
+        <img src="img/imgAccueil.jpg" alt="Image d'accueil" class="imgAccueil">
+        
+    </main>
+    
+    
+
+                               
+                            </nav>
+
+                            <!-- inclusion du template spécifique à la page affichée -->
+                            <?php include '../templates/' . $template . '.phtml';?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<!-- Footer -->
+<footer class="footer">
+    <section>
+        <h2>A propos</h2>
+        <li>
+            <ul>Qui sommes-nous ?</ul>
+            <ul>Nos engagements</ul>
+            <ul>Contactez-nous</ul>
+            <ul>FAQ</ul>
+        </li>
+    </section>
+    <section>
+        <h2>Mon compte</h2>
+        <li>
+            <ul>Se connecter</ul>
+            <ul>Mes commandes</ul>
+            <ul>Mon panier</ul>
+        </li>
+    </section>
+    <section>
+        <h2>Infos pratiques</h2>
+        <li>
+            <ul>Politique de gestion des cookies</ul>
+            <ul>Livraisons et retours</ul>
+            <ul>Conditions générales</ul>
+            <ul>Politique de confidentialité</ul>
+            <ul>Mentions légales</ul>
+            <ul>Paiement sécurisé</ul>
+        </li>
+    </section>
+    <section>
+        <div>
+            <img src="img/fb.png" alt="Logo Facebook">
+        </div>
+        <div>
+            <img src="img/instagram.png" alt="Logo Instagram">
+        </div>
+        <div>
+            <img src="img/pinterest.png" alt="Logo Pinsterest">
+        </div>
+    </section>
+    </footer>
+</footer>
+
+</html>
