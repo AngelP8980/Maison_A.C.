@@ -8,14 +8,14 @@ use App\Core\AbstractModel;
 
 class CategoryModel extends AbstractModel {
 
-    function getCategoryByTitle(string $title): array 
+    function getCategoryByTitle(string $title_category): array 
     {
         // Préparation de la requête
-        $sql = 'SELECT * FROM user WHERE title = ?';
+        $sql = 'SELECT * FROM category WHERE title_category = ?';
         $pdoStatement = self::$pdo->prepare($sql);
 
         // Exécution de la requête
-        $pdoStatement->execute([$title]);
+        $pdoStatement->execute([$title_category]);
 
         // Récupération du résultat 
         $category = $pdoStatement->fetch();
@@ -29,14 +29,14 @@ class CategoryModel extends AbstractModel {
     /** 
      * Insère la catégorie en base de données
      */
-    function insertCategory(string $title)
+    function insertCategory(string $title_category)
     {
     
         // Insertion des données 
-        $sql = 'INSERT INTO user (title, createdAt)
+        $sql = 'INSERT INTO category (title_category, createdAt)
                 VALUES (?, NOW())';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title]);
+        $pdoStatement->execute([$title_category]);
     }
 }

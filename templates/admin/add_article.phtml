@@ -8,24 +8,24 @@
     <fieldset>
         <legend>Ajouter un article</legend>
         <div class="mb-3">
-            <label for="title">Titre de l'article</label>
-            <input class="form-control" type="text" name="title" id="title" value="<?=htmlspecialchars($title);?>">
-            <?php if (isset($errors['title'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['title']);?></p>
+            <label for="title_article">Titre de l'article</label>
+            <input class="form-control" type="text" name="title_article" id="title_article" value="<?=htmlspecialchars($title_article);?>">
+            <?php if (isset($errors['title_article'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_article']);?></p>
             <?php endif; ?>
         </div>
         <div class="mb-3">
-            <label for="Description">Description de l'article</label>
-            <input class="form-control" type="text" name="Description" id="Description" value="<?=htmlspecialchars($Description);?>">
-            <?php if (isset($errors['Description'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['Description']);?></p>
+            <label for="description">Description de l'article</label>
+            <input class="form-control" type="text" name="description" id="description" value="<?=htmlspecialchars($description);?>">
+            <?php if (isset($errors['description'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['description']);?></p>
             <?php endif; ?>
         </div>
         <div class="mb-3">
-            <label for="Prix">Prix de l'article</label>
-            <input class="form-control" type="int" name="Prix" id="Prix" value="<?=htmlspecialchars($Prix);?>">
-            <?php if (isset($errors['Prix'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['Prix']);?></p>
+            <label for="prix">Prix de l'article</label>
+            <input class="form-control" type="int" name="prix" id="prix" value="<?=htmlspecialchars($prix);?>">
+            <?php if (isset($errors['prix'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['prix']);?></p>
             <?php endif; ?>
         </div>
         

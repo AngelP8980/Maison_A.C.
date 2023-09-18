@@ -1,39 +1,39 @@
 <?php 
 
 // Import de classes
-use App\Model\UserModel;
+use App\Model\CategoryModel;
 
 // Initialisations
 const PASSWORD_MIN_LENGTH = 8; // Longueur minimale du mot de passe
 
 $errors = []; // Tableau qui contiendra les erreurs
 
-$title = '';
+$title_category = '';
 
 
 // Si le formulaire est soumis...
 if (!empty($_POST)) {
 
     // 1. Récupération des champs du formulaire dans des variables
-    $title = trim($_POST['title']); 
+    $title_category = trim($_POST['title_category']);
    
 
     // 2. Validation des données du formulaire
-    if (!$title) {
-        $errors['title'] = 'Le champ "titre" est obligatoire';
+    if (!$title_category) {
+        $errors['title_category'] = 'Le champ "titre" est obligatoire';
     }
 
     
-    $userModel = new UserModel();
-    if ($userModel->getUserByEmail($title)) {
-        $errors['title'] = 'Il existe déjà une catégorie associée à ce titre';
+    $CategoryModel = new CategoryModel();
+    if ($categoryModel->getCategoryByTitle($title_category)) {
+        $errors['title_category'] = 'Il existe déjà une catégorie associée à ce titre';
     }
 
     // Si aucune erreur... 
     if (empty($errors)) {
 
         // Insertion de la catégorie en base de données
-        $categoryModel->insertCategory($title);
+        $categoryModel->insertCategory($title_category);
 
         // Message flash
         addFlash('La catégorie a bien été créée').
