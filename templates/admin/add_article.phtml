@@ -1,0 +1,34 @@
+<!-- FORM AJOUT ARTICLE -->
+
+<div class="text-center pt-3 pb-2">
+    <h2 class="my-4">Ajouter une catégorie et/ou un article</h2>
+</div>
+
+<form action="/add_article" method="POST" >
+    <fieldset>
+        <legend>Ajouter un article</legend>
+        <div class="mb-3">
+            <label for="title">Titre de l'article</label>
+            <input class="form-control" type="text" name="title" id="title" value="<?=htmlspecialchars($title);?>">
+            <?php if (isset($errors['title'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['title']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="Description">Description de l'article</label>
+            <input class="form-control" type="text" name="Description" id="Description" value="<?=htmlspecialchars($Description);?>">
+            <?php if (isset($errors['Description'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['Description']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="Prix">Prix de l'article</label>
+            <input class="form-control" type="int" name="Prix" id="Prix" value="<?=htmlspecialchars($Prix);?>">
+            <?php if (isset($errors['Prix'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['Prix']);?></p>
+            <?php endif; ?>
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Valider">
+    </fieldset>
+</form>

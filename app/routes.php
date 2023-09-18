@@ -46,6 +46,12 @@ $routes = [
         'controller' => 'admin/add_category.php'
     ],
 
+    // Création d'articles
+    'admin_add_article' => [
+        'path' => '/admin/article/add',
+        'controller' => 'admin/add_article.php'
+    ],
+
 ];
 
 return $routes;

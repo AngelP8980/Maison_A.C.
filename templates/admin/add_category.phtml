@@ -1,3 +1,20 @@
-FORM AJOUT CATEGORY
+<!-- FORM AJOUT CATEGORIE -->
 
-code html du form (signup)
+<div class="text-center pt-3 pb-2">
+    <h2 class="my-4">Ajouter une catégorie et/ou un article</h2>
+</div>
+
+<form action="/add_category" method="POST" >
+    <fieldset>
+        <legend>Ajouter une catégorie</legend>
+        <div class="mb-3">
+            <label for="title">Titre de la catégorie</label>
+            <input class="form-control" type="text" name="title" id="title" value="<?=htmlspecialchars($title);?>">
+            <?php if (isset($errors['title'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['title']);?></p>
+            <?php endif; ?>
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Valider">
+    </fieldset>
+</form>
