@@ -8,21 +8,29 @@ const PASSWORD_MIN_LENGTH = 8; // Longueur minimale du mot de passe
 
 $errors = []; // Tableau qui contiendra les erreurs
 
-$title_category = '';
-
+$title_article = '';
+$description = '';
+$price = '';
 
 // Si le formulaire est soumis...
 if (!empty($_POST)) {
 
     // 1. Récupération des champs du formulaire dans des variables
     $title_article = trim($_POST['title_article']); 
+    $description = $_POST['description'];
+    $price = floatval(str_replace(',', '.', str_replace('.', '', $_POST['price'])));
    
 
     // 2. Validation des données du formulaire
     if (!$title_article) {
         $errors['title_article'] = 'Le champ "titre" est obligatoire';
     }
-
+    if (!$description) {
+        $errors['description'] = 'Le champ "description" est obligatoire';
+    }
+    if (!$price) {
+        $errors['price'] = 'Le champ "prix" est obligatoire';
+    }
     
     $ArticleModel = new ArticleModel();
     if ($articleModel->getArticleByTitle($title_article)) {
@@ -33,7 +41,7 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion de la catégorie en base de données
-        $articleModel->insertArticle($title_article);
+        $articleModel->insertArticle($title_article, $description, $price);
 
         // Message flash
         addFlash("L'article a bien été créée").

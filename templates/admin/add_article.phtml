@@ -1,10 +1,7 @@
 <!-- FORM AJOUT ARTICLE -->
 
-<div class="text-center pt-3 pb-2">
-    <h2 class="my-4">Ajouter une catégorie et/ou un article</h2>
-</div>
 
-<form action="/add_article" method="POST" >
+<form action="/admin/article/add" method="POST" >
     <fieldset>
         <legend>Ajouter un article</legend>
         <div class="mb-3">
@@ -14,6 +11,19 @@
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['title_article']);?></p>
             <?php endif; ?>
         </div>
+        <div class="mb-3">
+            <label for="title_category">Quelle catégorie pour cet article ?</label>
+                <select name="category" id="category-select">
+                    <option value="">--Choisissez une catégorie--</option>
+                    <option value="<?=htmlspecialchars($title_category);?>"></option>
+                </select>
+
+            <input class="form-control" type="text" name="title_category" id="title_category" value="<?=htmlspecialchars($title_category);?>">
+            <?php if (isset($errors['title_category'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_category']);?></p>
+            <?php endif; ?>
+        </div>
+
         <div class="mb-3">
             <label for="description">Description de l'article</label>
             <input class="form-control" type="text" name="description" id="description" value="<?=htmlspecialchars($description);?>">

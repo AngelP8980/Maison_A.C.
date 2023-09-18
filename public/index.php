@@ -27,7 +27,7 @@ require '../src/lib/functions.php';
  * 
  * Travail sur les URLs : 
  * - on veut faire disparaître l'index.php
- * - on veut pas voir le chemin physique des dossiers du site
+ * - on ne veut pas voir le chemin physique des dossiers du site
  * - on veut de "jolies" URLs de type monsite.fr/ma-page
  * 
  * Avec Apache pour faire ça on va utiliser : 
@@ -39,7 +39,7 @@ require '../src/lib/functions.php';
  * on va utiliser le serveur web interne de PHP (PHP built-in web serveur)
  * 
  * Pour démarrer le serveur web de PHP, dans le terminal on se place dans le 
- * dossier du projet, on on lance la commande : 
+ * dossier du projet, on lance la commande : 
  * 
  * php -S localhost:8000 -t public
  */

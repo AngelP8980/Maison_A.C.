@@ -4,17 +4,20 @@
     <h2 class="my-4">Ajouter une catégorie et/ou un article</h2>
 </div>
 
-<form action="/add_category" method="POST" >
+<form action="admin/category/add" method="POST" >
     <fieldset>
-        <legend>Ajouter une catégorie</legend>
-        <div class="mb-3">
+        <legend class="p-4">Ajouter une catégorie</legend>
+        <div class="mt-4 p-5">
             <label for="title_category">Titre de la catégorie</label>
             <input class="form-control" type="text" name="title_category" id="title_category" value="<?=htmlspecialchars($title_category);?>">
             <?php if (isset($errors['title_category'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['title_category']);?></p>
             <?php endif; ?>
         </div>
-        
-        <input class="btn btn-primary" type="submit" value="Valider">
+        <div class="p-2">
+            <input class="btn btn-primary" type="submit" value="Valider l'ajout de la catégorie">
+        </div>
     </fieldset>
+
+    
 </form>

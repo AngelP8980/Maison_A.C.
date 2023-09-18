@@ -14,6 +14,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&family=Overlock:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&family=Overlock:wght@400;700;900&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&family=Overlock:wght@400;700;900&family=Overpass+Mono&family=Reenie+Beanie&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -51,58 +58,44 @@
     </nav>
     <!-- Main -->
     <main class="main">
-        <img src="img/imgAccueil.jpg" alt="Image d'accueil" class="imgAccueil">
-        <p>Angélique Chevalier vous propose une collection d'articles élégants et originaux confectionnés avec amour dans son atelier en Provence.</p>
-        <p>Pièces uniques, idées cadeaux, accessoires ou encore envie de chiffons et de jolies choses ?</p>
-        <p>Venez explorer l’univers créatif de la Maison A.C. Vous y trouverez harmonie d’élégance et de simplicité, authenticité et délicatesse mais aussi enchantement féérique et un brin de mignonnerie !</p>
-        <p>Bon voyage !</p>
-    </main>
-    
-    
-
-                               
-                            </nav>
-
-                            <!-- inclusion du template spécifique à la page affichée -->
-                            <?php include '../templates/' . $template . '.phtml';?>
-                        </div>
-                    </div>
-                </div>
+        <div class="container">
+            <img src="img/imgAccueil.jpg" alt="Image d'accueil" class="imgAccueil">
+            <div class="text">
+                <p class="p-1">Angélique Chevalier vous propose une collection d'articles élégants et originaux confectionnés avec amour dans son atelier en Provence.</p>
+                <p class="p-2">Pièces uniques, idées cadeaux, accessoires ou encore envie de chiffons et de jolies choses ?</p>
+                <p class="p-3">Venez explorer l’univers créatif de la Maison A.C. Vous y trouverez harmonie d’élégance et de simplicité, authenticité et délicatesse mais aussi enchantement féérique et un brin de mignonnerie !</p>
+                <p class="p-4">Bon voyage !</p>
             </div>
         </div>
-    </section>
+    </main>                         
 </body>
 <!-- Footer -->
 <footer class="footer">
-    <section>
-        <h2>A propos</h2>
-        <li>
-            <ul>Qui sommes-nous ?</ul>
-            <ul>Nos engagements</ul>
-            <ul>Contactez-nous</ul>
-            <ul>FAQ</ul>
-        </li>
-    </section>
-    <section>
-        <h2>Mon compte</h2>
-        <li>
-            <ul>Se connecter</ul>
-            <ul>Mes commandes</ul>
-            <ul>Mon panier</ul>
-        </li>
-    </section>
-    <section>
-        <h2>Infos pratiques</h2>
-        <li>
-            <ul>Politique de gestion des cookies</ul>
-            <ul>Livraisons et retours</ul>
-            <ul>Conditions générales</ul>
-            <ul>Politique de confidentialité</ul>
-            <ul>Mentions légales</ul>
-            <ul>Paiement sécurisé</ul>
-        </li>
-    </section>
-    <section>
+    <div class="flex">
+        <section>
+            <h2>A propos</h2>
+                <ul>Qui sommes-nous ?</ul>
+                <ul>Nos engagements</ul>
+                <ul>Contactez-nous</ul>
+                <ul>FAQ</ul>    
+        </section>
+        <section>
+            <h2>Mon compte</h2>
+                <ul>Se connecter</ul>
+                <ul>Mes commandes</ul>
+                <ul>Mon panier</ul>
+        </section>
+        <section>
+            <h2>Infos pratiques</h2>
+                <ul>Politique de gestion des cookies</ul>
+                <ul>Livraisons et retours</ul>
+                <ul>Conditions générales</ul>
+                <ul>Politique de confidentialité</ul>
+                <ul>Mentions légales</ul>
+                <ul>Paiement sécurisé</ul>
+        </section>
+    </div>
+    <section class="social">
         <div>
             <img src="img/fb.png" alt="Logo Facebook">
         </div>
@@ -110,10 +103,17 @@
             <img src="img/instagram.png" alt="Logo Instagram">
         </div>
         <div>
-            <img src="img/pinterest.png" alt="Logo Pinsterest">
+            <img src="img/pinterest.png" alt="Logo Pinterest">
         </div>
     </section>
+    <section class="copyright">
+        <i class="fa-regular fa-copyright"></i>
+        &nbsp;Maison A.C. 2023  |  Créé par AngeLink</section>
     </footer>
 </footer>
+
+<!-- inclusion du template spécifique à la page affichée -->
+<?php include '../templates/' . $template . '.phtml';?>
+
 
 </html>

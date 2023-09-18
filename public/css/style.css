@@ -14,8 +14,10 @@ body{
 
 .headerNav{
     display: flex;
-    margin: auto;
-    margin-left: 20%;
+    margin-left: auto;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 header nav a{
@@ -52,24 +54,84 @@ a {
     text-decoration: none!important;
 }
 
+.container{
+    position: relative;
+}
+
 .imgAccueil{
-    width : "100px";
-    height: "100px" ;
-}
-
-.main{
-    background: #e7e1e1;
-}
-
-.main img{
     width: 100%;
-    height: auto;
 }
 
-.main{
+.text{
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 46px;
+    color: black;
+}
+.p-1{
+    position: absolute;
+    bottom: 800px;
+    left: 780px;
+    right: 400px;
+}
 
+.p-2{
+    position: absolute;
+    bottom: 640px;
+    left: 650px;
+    right: 350px;
+}
+
+.p-3{
+    position: absolute;
+    bottom: 380px;
+    left: 550px;
+    right: 500px;
+}
+
+.p-4{
+    position: absolute;
+    bottom: 200px;
+    left: 750px;
+    right: 400px;
 }
 
 .footer{
+    margin: 0;
     background: #4e3452;
+    color: white;
+    font-family: 'Overlock';
+    font-size: 24px;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex section{
+    width: 420px;
+    justify-content: center;
+    margin: 20px 60px;
+    padding: 0 50px 0 50px;
+}
+
+.flex h2{
+    padding-left: 40px;
+}
+
+.social{
+    display: flex;
+    flex-direction: row;
+    margin-top: -100px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    justify-content: space-between;
+    width: 550px;
+}
+
+.copyright{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 40px 0;
+    font-family: 'Overpass Mono', monospace;
+    font-size: 15px;
 }
