@@ -52,6 +52,30 @@ $routes = [
         'controller' => 'admin/add_article.php'
     ],
 
+    // Catalogue
+    'catalog' => [
+        'path' => '/catalog',
+        'controller' => 'catalog.php'
+    ],
+
+    // Catégories
+    'category' => [
+        'path' => '/category',
+        'controller' => 'category.php'
+    ],    
+
+    // Produits
+    'produit' => [
+        'path' => '/produit',
+        'controller' => 'produit.php'
+    ], 
+
+    // Contact
+    'produit' => [
+        'path' => '/contact',
+        'controller' => 'contact.php'
+    ],
+
 ];
 
 return $routes;

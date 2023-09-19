@@ -112,3 +112,32 @@ function isConnected(): bool
 
     return array_key_exists('user', $_SESSION) && isset($_SESSION['user']);
 }
+
+/**
+ * Construction d'URLs absolues
+ */
+function buildUrl(string $routeName, array $params = []): string
+{
+    $routes = include '../app/routes.php';
+
+    if (!array_key_exists($routeName, $routes)) {
+        throw new Exception('Route "'.$routeName.'" not found.');
+    }
+
+    $url = $routes[$routeName]['path'];
+
+    if ($params) {
+        $url .= '?' . http_build_query($params);
+    }
+
+    return $url;
+}
+
+
+
+/**
+ * Construction du chemin vers les ressources (CSS, JS, images, etc.)
+ */
+function asset(string $asset) {
+    return BASE_URL . '/' . $asset;
+}
