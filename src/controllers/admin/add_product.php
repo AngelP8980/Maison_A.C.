@@ -34,7 +34,7 @@ if (!empty($_POST)) {
     
     $ProductModel = new ProductModel();
     if ($productModel->getProductByTitle($title_product)) {
-        $errors['title_product'] = 'Il existe déjà un article associée à ce titre';
+        $errors['title_product'] = 'Il existe déjà un produit associé à ce titre';
     }
 
     // Si aucune erreur... 
@@ -44,7 +44,7 @@ if (!empty($_POST)) {
         $productModel->insertProduct($title_product, $description, $price);
 
         // Message flash
-        addFlash("L'article a bien été créée").
+        addFlash("Le produit a bien été créée").
 
         // Redirection
         header('Location: /');

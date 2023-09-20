@@ -25,6 +25,14 @@
         </div>
 
         <div class="mb-3">
+            <label for="technique">Technique(s) utilisée(s) (couture, crochet, aiguille, tricot...)</label>
+            <input class="form-control" type="text" name="technique" id="technique" value="<?=htmlspecialchars($technique);?>">
+            <?php if (isset($errors['technique'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['technique']);?></p>
+            <?php endif; ?>
+        </div>
+
+        <div class="mb-3">
             <label for="description">Description du produit</label>
             <input class="form-control" type="text" name="description" id="description" value="<?=htmlspecialchars($description);?>">
             <?php if (isset($errors['description'])): ?>

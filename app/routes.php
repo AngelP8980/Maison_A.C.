@@ -67,11 +67,11 @@ $routes = [
     // Produits
     'product' => [
         'path' => '/product',
-        'controller' => 'produit.php'
+        'controller' => 'product.php'
     ], 
 
     // Contact
-    'produit' => [
+    'contact' => [
         'path' => '/contact',
         'controller' => 'contact.php'
     ],
