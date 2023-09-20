@@ -1,0 +1,44 @@
+<!-- FORM AJOUT PRODUIT -->
+
+
+<form action="/admin/product/add" method="POST" >
+    <fieldset>
+        <legend>Ajouter un produit</legend>
+        <div class="mb-3">
+            <label for="title_product">Titre du produit</label>
+            <input class="form-control" type="text" name="title_product" id="title_product" value="<?=htmlspecialchars($title_product);?>">
+            <?php if (isset($errors['title_product'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_product']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="title_category">Quelle catégorie pour ce produit ?</label>
+                <select name="category" id="category-select">
+                    <option value="">--Choisissez une catégorie--</option>
+                    <option value="<?=htmlspecialchars($title_category);?>"></option>
+                </select>
+
+            <input class="form-control" type="text" name="title_category" id="title_category" value="<?=htmlspecialchars($title_category);?>">
+            <?php if (isset($errors['title_category'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_category']);?></p>
+            <?php endif; ?>
+        </div>
+
+        <div class="mb-3">
+            <label for="description">Description du produit</label>
+            <input class="form-control" type="text" name="description" id="description" value="<?=htmlspecialchars($description);?>">
+            <?php if (isset($errors['description'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['description']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="prix">Prix du produit</label>
+            <input class="form-control" type="int" name="prix" id="prix" value="<?=htmlspecialchars($prix);?>">
+            <?php if (isset($errors['prix'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['prix']);?></p>
+            <?php endif; ?>
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Valider">
+    </fieldset>
+</form>

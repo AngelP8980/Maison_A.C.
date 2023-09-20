@@ -1,3 +1,8 @@
+<!-- Main page d'identification signup -->
+
+<!-- Affichage du formulaire de connection -->
+
+<!-- Affichage du formulaire de création de compte -->
 <div class="text-center pt-3 pb-2">
     <img src="img/check.webp" alt="Check" width="60">
     <h2 class="my-4">Créez un compte</h2>
@@ -5,26 +10,33 @@
 
 <form action="/signup" method="POST" >
     <fieldset>
-        <legend>Créez votre compte</legend>
+        <legend>Pas de compte ? Créez-en un</legend>
         <div class="mb-3">
-            <label for="firstname">Prénom</label>
+            <label for="firstname">Votre prénom</label>
             <input class="form-control" type="text" name="firstname" id="firstname" value="<?=htmlspecialchars($firstname);?>">
             <?php if (isset($errors['firstname'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['firstname']);?></p>
             <?php endif; ?>
         </div>
         <div class="mb-3">
-            <label for="lastname">Nom</label>
+            <label for="lastname">Votre nom</label>
             <input class="form-control" type="text" name="lastname" id="lastname" value="<?=htmlspecialchars($lastname);?>">
             <?php if (isset($errors['lastname'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['lastname']);?></p>
             <?php endif; ?>
         </div>
         <div class="mb-3">
-            <label for="email">Email</label>
+            <label for="email">Votre e-mail</label>
             <input class="form-control" type="text" name="email" id="email" value="<?=htmlspecialchars($email);?>">
             <?php if (isset($errors['email'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['email']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="phone">Votre n° de téléphone</label>
+            <input class="form-control" type="text" name="phone" id="phone" value="<?=htmlspecialchars($phone);?>">
+            <?php if (isset($errors['phone'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['phone']);?></p>
             <?php endif; ?>
         </div>
         <div class="mb-3">

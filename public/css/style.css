@@ -1,7 +1,7 @@
 body{
     margin: 0;
 }
-
+/*HEADER*/
 .header{
     display: flex;
 }
@@ -11,7 +11,7 @@ body{
     height: 30%;
     margin-left: 10px;
 }
-
+/*HEADER NAV*/
 .headerNav{
     display: flex;
     margin-left: auto;
@@ -34,7 +34,7 @@ header nav a{
     font-size: 24px;
     font-weight: 900;
 }
-
+/*NAV BAR MENU*/
 .navBarMenu{
     background: #d3caca;
     display: flex;
@@ -53,7 +53,7 @@ header nav a{
 a {
     text-decoration: none!important;
 }
-
+/*MAIN HOME*/
 .container{
     position: relative;
 }
@@ -94,7 +94,15 @@ a {
     left: 750px;
     right: 400px;
 }
+/*MAIN CATALOG*/
 
+/*MAIN CATEGORY*/
+
+/*MAIN PRODUCT*/
+
+/*MAIN CONTACT*/
+
+/*FOOTER*/
 .footer{
     margin: 0;
     background: #4e3452;

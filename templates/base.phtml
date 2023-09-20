@@ -57,18 +57,11 @@
         <a href="/">La Maison</a>
         <a href="/">Contact</a>
     </nav>
-    <!-- Main -->
-    <main class="main">
-        <div class="container">
-            <img src="img/imgAccueil.jpg" alt="Image d'accueil" class="imgAccueil">
-            <div class="text">
-                <p class="p-1">Angélique Chevalier vous propose une collection d'articles élégants et originaux confectionnés avec amour dans son atelier en Provence.</p>
-                <p class="p-2">Pièces uniques, idées cadeaux, accessoires ou encore envie de chiffons et de jolies choses ?</p>
-                <p class="p-3">Venez explorer l’univers créatif de la Maison A.C. Vous y trouverez harmonie d’élégance et de simplicité, authenticité et délicatesse mais aussi enchantement féérique et un brin de mignonnerie !</p>
-                <p class="p-4">Bon voyage !</p>
-            </div>
-        </div>
-    </main>                         
+
+    
+<!-- inclusion du template spécifique à la page affichée -->
+<?php include '../templates/' . $template . '.phtml';?>
+    
 </body>
 <!-- Footer -->
 <footer class="footer">
@@ -112,9 +105,6 @@
         &nbsp;Maison A.C. 2023  |  Créé par AngeLink</section>
     </footer>
 </footer>
-
-<!-- inclusion du template spécifique à la page affichée -->
-<?php include '../templates/' . $template . '.phtml';?>
 
 
 </html>
