@@ -46,11 +46,17 @@ $routes = [
         'controller' => 'admin/add_category.php'
     ],
 
-    // Création d'articles
-    'admin_add_article' => [
-        'path' => '/admin/article/add',
-        'controller' => 'admin/add_article.php'
+    // Création de produits
+    'admin_add_product' => [
+        'path' => '/admin/product/add',
+        'controller' => 'admin/add_product.php'
     ],
+
+    // Création de techniques
+    'admin_add_technic' => [
+        'path' => '/admin/technic/add',
+        'controller' => 'admin/add_technic.php'
+    ], 
 
     // Catalogue
     'catalog' => [

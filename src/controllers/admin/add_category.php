@@ -20,11 +20,11 @@ if (!empty($_POST)) {
 
     // 2. Validation des données du formulaire
     if (!$title_category) {
-        $errors['title_category'] = 'Le champ "titre" est obligatoire';
+        $errors['title_category'] = 'Le champ "titre de la catégorie" est obligatoire';
     }
 
     
-    $CategoryModel = new CategoryModel();
+    $categoryModel = new CategoryModel();
     if ($categoryModel->getCategoryByTitle($title_category)) {
         $errors['title_category'] = 'Il existe déjà une catégorie associée à ce titre';
     }

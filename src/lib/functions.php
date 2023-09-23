@@ -90,7 +90,7 @@ function checkCredentials($email, $password): array
 /**
  * Enregistre en session les données de l'utilisateur
  */
-function registerUser(int $userId, string $email, string $firstname, string $lastname)
+function registerUser(int $userId, string $email, string $firstname, string $lastname, string $phone)
 {
     // On s'assure que la session est bien démarrée
     initSession();
@@ -99,7 +99,8 @@ function registerUser(int $userId, string $email, string $firstname, string $las
         'id' => $userId,
         'email' => $email,
         'firstname' => $firstname,
-        'lastname' => $lastname
+        'lastname' => $lastname,
+        'phone' => $phone
     ];
 }
 
@@ -118,26 +119,76 @@ function isConnected(): bool
  */
 function buildUrl(string $routeName, array $params = []): string
 {
-    $routes = include '../app/routes.php';
+    $routes = require "../app/routes.php";
+    if (isset($routes[$routeName])) {
+        $path = $routes[$routeName]['path'];
 
-    if (!array_key_exists($routeName, $routes)) {
-        throw new Exception('Route "'.$routeName.'" not found.');
+        if (!empty($params)) {
+            $path .= '?' . http_build_query($params);
+        }
+
+        // Concaténation de BASE_URL avec le chemin de la ressource en paramètre
+        $url = rtrim(BASE_URL, '/') . '/' . ltrim($path, '/');
+
+        return $url;
+    } else {
+        throw new Exception("Route introuvable : $routeName", 404);
     }
-
-    $url = $routes[$routeName]['path'];
-
-    if ($params) {
-        $url .= '?' . http_build_query($params);
-    }
-
-    return $url;
 }
 
+function asset(string $resourcePath): string
+{
+    // Utilisation de la constante BASE_URL pour construire l'URL complet
+    $url = rtrim(BASE_URL, '/') . '/' . ltrim($resourcePath, '/');
+
+    // Retourne l'URL construite
+    return $url;
+}
 
 
 /**
  * Construction du chemin vers les ressources (CSS, JS, images, etc.)
  */
-function asset(string $asset) {
-    return BASE_URL . '/' . $asset;
-}
+// function asset(string $asset) {
+//     return BASE_URL . '/' . $asset;
+// }
+
+/**
+ * Validation de l'envoie du formulaire de contact
+ */
+// function validate() {
+//     var isValid = true;
+
+//     var lastname = $("#lastname").val();
+//     var firstname = $("#firstname").val();
+//     var email = $("#email").val();
+//     var phone = $("#phone").val();
+//     var message = $("#message").val();
+
+//     if (lastname == "") {
+//         $("#lastname");
+//         isValid = false;
+//     }
+//     if (firstname == "") {
+//         $("#firstname");
+//         isValid = false;
+//     }
+//     if (email == "") {
+//         $("#email");
+//         isValid = false;
+//     }
+//     if (!email.match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)) {
+//         $("#info");
+//         $("#email");
+//         isValid = false;
+//     }
+//     if (phone == "") {
+//         $("#phone");
+//         isValid = false;
+//     }
+//     if (message == "") {
+//         $("#message");
+//         isValid = false;
+//     }
+//     return isValid;
+// }

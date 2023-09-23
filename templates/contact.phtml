@@ -1,14 +1,47 @@
  <!-- Main page contact -->
 
  <main>
-    <!-- Récupération du titre de la page contact -->
-    <h1>
-        <?php
-        ?>
-    </h1>
+    <h1>Formulaire de Contact</h1>
 
-    <!-- Affichage du formulaire de contatc -->
+    <!-- Affichage du formulaire de contact -->
+    <form action="contact.php" method="post">
+        <input type="text" name="lastname" id="lastname" placeholder="Votre nom"><br /><br />
+        <input type="text" name="firstname" id="firstname" placeholder="Votre prénom"><br /><br />
+        <input type="mail" name="email" id="email" placeholder="Votre e-mail"><br /><br />
+        <input type="text" name="phone" id="phone" placeholder="Votre n° de téléphone"><br /><br />
+        <input type="textarea" name="message" id="message" placeholder="Votre message"><br /><br />
+        <input type="submit" name="send" value="Envoyer le message">
+
+        <div id="statusMessage"> 
+            <?php if (!empty($db_msg)) { ?>
+                <p class='<?php echo $type_db_msg; ?>Message'>
+                    <?php echo $db_msg; ?>
+                </p>
+            <?php } ?>
+            <?php if (!empty($mail_msg)) { ?>
+              <p class='<?php echo $type_mail_msg; ?>Message'>
+                  <?php echo $mail_msg; ?>
+            </p>
+            <?php } ?>
+            </div>
+
+        
+
     <!-- icônes Appelez-nous, Ecrivez-nous, Atelier situé en Provence -->
+    <section class="section-bas">
+        <div>
+            <img src="img/allo.jpg" alt="Icône appel téléphonique">
+            <h4>Appelez-nous 07.70.32.19.28</h4>
+        </div>
+        <div>
+            <img src="img/mail.png" alt="Icône email">
+            <h4>Ecrivez-nous maison-ac@gmail.com</h4>
+        </div>
+        <div>
+            <img src="img/localisation.png" alt="Icône de localisation">
+            <h4>Atelier situé en Provence</h4>
+        </div>
+    </section>
 
 </main>
 

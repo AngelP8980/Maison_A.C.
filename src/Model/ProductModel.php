@@ -18,25 +18,25 @@ class ProductModel extends AbstractModel {
         $pdoStatement->execute([$title_product]);
 
         // Récupération du résultat 
-        $article = $pdoStatement->fetch();
+        $product = $pdoStatement->fetch();
 
-        if (!$article) {
+        if (!$product) {
             return [];
         }
-        return $article;
+        return $product;
     }
 
     /** 
-     * Insère du produit en base de données
+     * Insère le produit en base de données
      */
-    function insertProduct(string $title_product, string $description, float $price)
+    function insertProduct(string $title_product, string $accessories, float $price, string $description, string $the_most, string $features, string $dimensions, string $precision_description)
     {
     
         // Insertion des données 
-        $sql = 'INSERT INTO product (title_product, description, price, createdAt)
-                VALUES (?, ?, ?, NOW())';
+        $sql = 'INSERT INTO product (title_product, accessories, price, description, the_most, features, dimensions, precision_description, createdAt)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title_product, $description, $price]);
+        $pdoStatement->execute([$title_product, $accessories, $price, $description, $the_most, $features, $dimensions, $precision_description]);
     }
 }

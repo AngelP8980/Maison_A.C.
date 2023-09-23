@@ -95,6 +95,21 @@ a {
     right: 400px;
 }
 /*MAIN CATALOG*/
+.main-catalog{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+h3{
+    font-family: 'Overlock', cursive;
+    font-size: 28px;
+    color: white;
+    stroke: #000000;
+    stroke-opacity: 50%;
+    text-shadow: -3px 0px #000000;
+    padding: 4px;
+}
 
 /*MAIN CATEGORY*/
 
