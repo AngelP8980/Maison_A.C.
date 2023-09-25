@@ -59,4 +59,62 @@ class CategoryModel extends AbstractModel {
         }
         return $categories;
     }
+
+    /**
+     * Sélectionne une catégorie à partir de son id
+     * @param int $categoryId L'id de la categorie que je souhaite sélectionner
+     * @return array La catégorie sélectionnée
+     */
+    function getOneCategoryById(int $categoryId): array
+    {
+       
+        // Préparation de la requête de sélection
+        $sql = 'SELECT title_category 
+                FROM category AS C
+                WHERE C.id = ?';
+
+        $pdoStatement = self::$pdo->prepare($sql);
+        
+        // Exécution de la requête
+        $pdoStatement->execute([$categoryId]);
+
+        // Récupération et retour du résultat de la requête SQL
+        $category = $pdoStatement->fetch();
+
+        if (!$category) {
+            return [];
+        }
+
+        return $category;
+    }
+
+    /** 
+     * Modifie une catégorie en base de données
+     */
+    function editCategory(string $title)
+    {
+        // Insertion des données dans la base de données
+        $sql = 'UPDATE category 
+                SET title_category = ?
+                WHERE id = ?';
+
+        $pdoStatement = self::$pdo->prepare($sql);
+        $pdoStatement->execute([$title]);
+    }
+
+     /**
+     * Supprime une catégorie à partir de son id
+     * @param int $categoryId L'id de la catégorie à supprimer
+     */
+    function deleteCategory(int $categoryId)
+    {
+       
+        // Préparation de la requête SQL de suppression
+        $sql = 'DELETE FROM category WHERE id = ?';
+
+        $pdoStatement = self::$pdo->prepare($sql);
+        
+        // Exécution de la requête
+        $pdoStatement->execute([$categoryId]);
+    }
 }

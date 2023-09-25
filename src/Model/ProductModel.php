@@ -63,4 +63,62 @@ class ProductModel extends AbstractModel {
         }
         return $products;
     }
+
+    /**
+     * Sélectionne un produit à partir de son id
+     * @param int $productId L'id du produit que je souhaite sélectionner
+     * @return array Le produit sélectionné
+     */
+    function getOneProductById(int $produtId): array
+    {
+       
+        // Préparation de la requête de sélection
+        $sql = 'SELECT title_product 
+                FROM product AS P
+                WHERE P.id = ?';
+
+        $pdoStatement = self::$pdo->prepare($sql);
+        
+        // Exécution de la requête
+        $pdoStatement->execute([$productId]);
+
+        // Récupération et retour du résultat de la requête SQL
+        $category = $pdoStatement->fetch();
+
+        if (!$product) {
+            return [];
+        }
+
+        return $category;
+    }
+
+    /** 
+     * Modifie un produit en base de données
+     */
+    function editProduct(string $title)
+    {
+        // Insertion des données dans la base de données
+        $sql = 'UPDATE product 
+                SET title_product = ?
+                WHERE id = ?';
+
+        $pdoStatement = self::$pdo->prepare($sql);
+        $pdoStatement->execute([$title]);
+    }
+
+     /**
+     * Supprime un produit à partir de son id
+     * @param int $productId L'id du produit à supprimer
+     */
+    function deleteProduct(int $productId)
+    {
+       
+        // Préparation de la requête SQL de suppression
+        $sql = 'DELETE FROM product WHERE id = ?';
+
+        $pdoStatement = self::$pdo->prepare($sql);
+        
+        // Exécution de la requête
+        $pdoStatement->execute([$productId]);
+    }
 }

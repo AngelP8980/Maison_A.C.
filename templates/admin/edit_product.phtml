@@ -1,0 +1,75 @@
+<!-- FORM MODIFICATION PRODUIT -->
+
+<!-- Affichage du message flash le cas échéant -->
+<?php if ($flashMessage): ?>
+    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
+<?php endif; ?>
+
+<div class="text-center pt-3 pb-2">
+    <h2 class="my-4">Modifier un produit</h2>
+</div>
+
+<form action="<?=buildUrl('admin_edit_product')?>" method="POST" >
+    <fieldset>
+        <div class="mt-4 p-5">
+            <label for="title_product">Titre du produit</label>
+            <input class="form-control" type="text" name="title_product" id="title_product" value="<?=htmlspecialchars($title_product);?>">
+            <?php if (isset($errors['title_product'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_product']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="accessories">Accessoires</label>
+            <input class="form-control" type="text" name="accessories" id="accessories" value="<?=htmlspecialchars($accessories);?>">
+            <?php if (isset($errors['accessories'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['accessories']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="price">Prix</label>
+            <input class="form-control" type="number" name="price" id="price" value="<?=htmlspecialchars($price);?>">
+            <?php if (isset($errors['price'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['price']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="description">Description</label>
+            <input class="form-control" type="text" name="description" id="description" value="<?=htmlspecialchars($description);?>">
+            <?php if (isset($errors['description'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['description']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="the_most">Les +</label>
+            <input class="form-control" type="text" name="the_most" id="the_most" value="<?=htmlspecialchars($the_most);?>">
+            <?php if (isset($errors['the_most'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['the_most']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="features">Caractéristiques</label>
+            <input class="form-control" type="text" name="features" id="features" value="<?=htmlspecialchars($features);?>">
+            <?php if (isset($errors['features'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['features']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="dimensions">Dimensions</label>
+            <input class="form-control" type="text" name="dimensions" id="dimensions" value="<?=htmlspecialchars($dimensions);?>">
+            <?php if (isset($errors['dimensions'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['dimensions']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="precision_description">Précisions</label>
+            <input class="form-control" type="text" name="precision_description" id="precision_description" value="<?=htmlspecialchars($precision_description);?>">
+            <?php if (isset($errors['precision_description'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['precision_description']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="p-2">
+            <input class="btn btn-primary" type="submit" value="Valider la modification du produit">
+        </div>
+    </fieldset>
+    
+</form>

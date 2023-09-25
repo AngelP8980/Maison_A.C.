@@ -46,17 +46,35 @@ $routes = [
         'controller' => 'admin/add_category.php'
     ],
 
+    // Modification d'une catégorie
+    'admin_edit_category' => [
+        'path' => '/admin/category/edit',
+        'controller' => 'admin/edit_category.php'
+    ],
+
+     // Création de techniques
+     'admin_add_technic' => [
+        'path' => '/admin/technic/add',
+        'controller' => 'admin/add_technic.php'
+    ], 
+
+    // Modification d'une technique
+    'admin_edit_technic' => [
+        'path' => '/admin/technic/edit',
+        'controller' => 'admin/edit_tehnic.php'
+    ],
+
     // Création de produits
     'admin_add_product' => [
         'path' => '/admin/product/add',
         'controller' => 'admin/add_product.php'
     ],
 
-    // Création de techniques
-    'admin_add_technic' => [
-        'path' => '/admin/technic/add',
-        'controller' => 'admin/add_technic.php'
-    ], 
+    // Modification d'un produit
+    'admin_edit_product' => [
+        'path' => '/admin/product/edit',
+        'controller' => 'admin/edit_product.php'
+    ],
 
     // Liste des catégories
     'admin_list_category' => [
