@@ -1,0 +1,35 @@
+<!-- Liste des techniques existantes -->
+
+
+<div class="text-center pt-3 pb-2">
+    <h2 class="my-4">Liste des techniques existantes</h2>
+
+<table class="table table-striped bg-white">
+<thead>
+<tr>
+  <th scope="col">#id</th>
+  <th scope="col">Titre</th>
+</tr>
+</thead>
+<tbody>
+<?php 
+    foreach ($technics as $technic): ?>
+        <tr class="fw-normal">
+            <td class="align-middle">
+                <span><?=htmlspecialchars($technic['id_technic']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($technic['title_technic']);?></span>
+            </td>
+    <?php endforeach; ?>
+</tbody>
+</table>
+
+</div>
+
+
+<!-- Affichage du message flash le cas échéant -->
+<?php if ($flashMessage): ?>
+    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
+<?php endif; ?>
+

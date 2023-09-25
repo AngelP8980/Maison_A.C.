@@ -3,6 +3,9 @@
 // Import de classes
 use App\Model\TechnicModel;
 
+// Flash messages
+$flashMessage = fetchFlash("La technique a bien été créée");
+
 // Initialisations
 const PASSWORD_MIN_LENGTH = 8; // Longueur minimale du mot de passe
 
@@ -39,7 +42,7 @@ if (!empty($_POST)) {
         addFlash('La technique a bien été créée').
 
         // Redirection
-        header('Location: /');
+        header('Location: /admin/technic/add');
         exit;
     }
 }

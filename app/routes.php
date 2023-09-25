@@ -58,6 +58,24 @@ $routes = [
         'controller' => 'admin/add_technic.php'
     ], 
 
+    // Liste des catégories
+    'admin_list_category' => [
+        'path' => '/admin/category/list',
+        'controller' => 'admin/list_category.php'
+    ],
+
+    // Liste des techniques
+    'admin_list_technic' => [
+        'path' => '/admin/technic/list',
+        'controller' => 'admin/list_technic.php'
+    ],
+
+    // Liste des produits
+    'admin_list_product' => [
+        'path' => '/admin/product/list',
+        'controller' => 'admin/list_product.php'
+    ],
+
     // Catalogue
     'catalog' => [
         'path' => '/catalog',

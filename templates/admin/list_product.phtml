@@ -1,0 +1,72 @@
+<!-- Liste des produits -->
+
+
+<div class="text-center pt-3 pb-2">
+    <h2 class="my-4">Liste des produits</h2>
+
+<table class="table table-striped bg-white">
+<thead>
+<tr>
+  <th scope="col">#id</th>
+  <th scope="col">Titre</th>
+  <th scope="col">Accessoires</th>
+  <th scope="col">Prix</th>
+  <th scope="col">Description</th>
+  <th scope="col">Les +</th>
+  <th scope="col">Caractéristiques</th>
+  <th scope="col">Dimensions</th>
+  <th scope="col">Precisions</th>
+  <th scope="col">N° Catégorie</th>
+  <th scope="col">Technique utilisée</th>
+
+</tr>
+</thead>
+<tbody>
+<?php 
+    foreach ($products as $product): ?>
+        <tr class="fw-normal">
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['id_product']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['title_product']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['accessories']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['price']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['description']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['the_most']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['features']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['dimensions']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['precision_description']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['id_category']);?></span>
+            </td>
+            <td class="align-middle">
+                <span><?=htmlspecialchars($product['id_technic']);?></span>
+            </td>
+    <?php endforeach; ?>
+</tbody>
+</table>
+
+</div>
+
+
+<!-- Affichage du message flash le cas échéant -->
+<?php if ($flashMessage): ?>
+    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
+<?php endif; ?>
+

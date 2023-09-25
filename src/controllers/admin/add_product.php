@@ -2,6 +2,15 @@
 
 // Import de classes
 use App\Model\ProductModel;
+use App\Model\CategoryModel;
+use App\Model\TechnicModel;
+
+$productModel = new ProductModel();
+$categoryModel = new CategoryModel();
+$technicModel = new TechnicModel();
+
+// Flash messages
+$flashMessage = fetchFlash("Le produit a bien été créé");
 
 // Initialisations
 const PASSWORD_MIN_LENGTH = 8; // Longueur minimale du mot de passe
@@ -10,6 +19,8 @@ $errors = []; // Tableau qui contiendra les erreurs
 
 $title_product = '';
 $accessories = '';
+$categories = $categoryModel->getCategoryAll();
+$technics = $technicModel->getTechnicAll();
 $price = '';
 $description = '';
 $the_most = '';
@@ -29,6 +40,8 @@ if (!empty($_POST)) {
     $features = $_POST['features'];
     $dimensions = $_POST['dimensions'];
     $precision_description = $_POST['precision_description'];
+    $category = $_POST['category'];
+    $technic = $_POST['technic'];
 
     // 2. Validation des données du formulaire
     if (!$title_product) {
@@ -55,9 +68,13 @@ if (!empty($_POST)) {
     if (!$precision_description) {
         $errors['precision_description'] = 'Le champ "précisions sur le produit" est obligatoire';
     }
+    if (!$category) {
+        $errors['category'] = 'Veuillez séletionner une catégorie';
+    }
+    if (!$technic) {
+        $errors['technic'] = 'Veuillez séletionner une technique';
+    }
     
-    
-    $productModel = new ProductModel();
     if ($productModel->getProductByTitle($title_product)) {
         $errors['title_product'] = 'Il existe déjà un produit associé à ce titre';
     }
@@ -66,13 +83,13 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion du produit en base de données
-        $productModel->insertProduct($title_product, $accessories, $price, $description, $the_most, $features, $dimensions, $precision_description);
+        $productModel->insertProduct($title_product, $accessories, $price, $description, $the_most, $features, $dimensions, $precision_description, $category, $technic);
 
         // Message flash
         addFlash("Le produit a bien été créé").
 
         // Redirection
-        header('Location: /');
+        header('Location: /admin/product/add');
         exit;
     }
 }

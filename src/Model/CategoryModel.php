@@ -39,4 +39,24 @@ class CategoryModel extends AbstractModel {
         $pdoStatement = self::$pdo->prepare($sql);
         $pdoStatement->execute([$title_category]);
     }
+
+    /** 
+     * Cherche toutes les catégories en base de données
+     */
+    function getCategoryAll(): array 
+    {
+        // Préparation de la requête
+        $sql = 'SELECT * FROM category';
+        $pdoStatement = self::$pdo->prepare($sql);
+
+        // Exécution de la requête
+        $pdoStatement->execute([]);
+        
+        // Récupération du résultat 
+        $categories = $pdoStatement->fetchAll();
+        if (!$categories) {
+            return [];
+        }
+        return $categories;
+    }
 }

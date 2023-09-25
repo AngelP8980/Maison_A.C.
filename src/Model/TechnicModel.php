@@ -26,6 +26,22 @@ class TechnicModel extends AbstractModel {
         return $technic;
     }
 
+    function getTechnicAll(): array 
+    {
+        // Préparation de la requête
+        $sql = 'SELECT * FROM technic';
+        $pdoStatement = self::$pdo->prepare($sql);
+
+        // Exécution de la requête
+        $pdoStatement->execute([]);
+        // Récupération du résultat 
+        $technics = $pdoStatement->fetchAll();
+        if (!$technics) {
+            return [];
+        }
+        return $technics;
+    }
+
     /** 
      * Insère la technique en base de données
      */

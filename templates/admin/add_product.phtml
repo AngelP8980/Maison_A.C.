@@ -1,5 +1,10 @@
 <!-- FORM AJOUT PRODUIT -->
 
+<!-- Affichage du message flash le cas échéant -->
+<?php if ($flashMessage): ?>
+    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
+<?php endif; ?>
+
 <div class="text-center pt-3 pb-2">
     <h2 class="my-4">Ajouter un produit</h2>
 </div>
@@ -15,23 +20,39 @@
         </div>
         <div class="p-4">
             <label for="accessories">Accessoires liés au produit</label>
-            <textarea class="form-control" type="text-area" name="accessories" id="accessories" rows="4" cols="50" value="<?=htmlspecialchars($accessories);?>"></textarea>
+            <textarea class="form-control" type="text-area" name="accessories" id="accessories" rows="4" cols="50" value="<?=htmlspecialchars($accessories ?? "");?>"></textarea>
             <?php if (isset($errors['accessories'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['accessories']);?></p>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['accessories'] ?? "");?></p>
             <?php endif; ?>
         </div>
+        
         <div class="p-4">
             <label for="title_category">Quelle catégorie pour ce produit ?</label>
+       
                 <select name="category" id="category-select">
                     <option value="">--Choisissez une catégorie--</option>
-                    <option value="<?=htmlspecialchars($title_category);?>"></option>
+                                        
+                    <?php foreach ($categories as $value){ ?>
+                        <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
+                            <option value=<?=$value['id_category']?>><?=htmlspecialchars($value['title_category'])?> </option>
+                    <?php }  ?>
                 </select>
+                    <?php if (isset($errors['category'])): ?>
+                    <p class="alert alert-danger"><?=htmlspecialchars($errors['category']);?></p>
+                <?php endif; ?>
         </div>
         <div class="p-4">
             <label for="technic">Technique utilisée</label>
                 <select name="technic" id="technic">
                     <option value="">--Choisissez une technique--</option>
-                    <option value="<?=htmlspecialchars($title_technic);?>"></option>
+                    <?php foreach ($technics as $value){ ?>
+                        <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
+                            <option value=<?=$value['id_technic']?>><?=htmlspecialchars($value['title_technic'])?> </option>
+                    <?php }  ?>
+                </select>
+                    <?php if (isset($errors['technic'])): ?>
+                    <p class="alert alert-danger"><?=htmlspecialchars($errors['technic']);?></p>
+                <?php endif; ?>                
                 </select>
         </div>
         <div class="p-4">
@@ -56,7 +77,7 @@
             <?php endif; ?>
         </div>
         <div class="p-4">
-            <label for="features">La composition du produit</label>
+            <label for="features">Les caractéristiques du produit</label>
             <textarea class="form-control" type="text-area" name="features" id="features" rows="8" cols="50" value="<?=htmlspecialchars($features);?>"></textarea>
             <?php if (isset($errors['features'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['features']);?></p>
@@ -81,5 +102,6 @@
         <input class="btn btn-primary" type="submit" value="Valider l'ajout du produit">
         </div>
     </fieldset>
+
 
 </form>
