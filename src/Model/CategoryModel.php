@@ -71,7 +71,7 @@ class CategoryModel extends AbstractModel {
         // Préparation de la requête de sélection
         $sql = 'SELECT title_category 
                 FROM category AS C
-                WHERE C.id = ?';
+                WHERE id_category = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
         
@@ -91,7 +91,7 @@ class CategoryModel extends AbstractModel {
     /** 
      * Modifie une catégorie en base de données
      */
-    function editCategory(string $title)
+    function editCategory(string $title_category)
     {
         // Insertion des données dans la base de données
         $sql = 'UPDATE category 
@@ -99,7 +99,7 @@ class CategoryModel extends AbstractModel {
                 WHERE id = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title]);
+        $pdoStatement->execute([$title_category]);
     }
 
      /**

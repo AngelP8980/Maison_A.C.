@@ -10,7 +10,7 @@ if (!array_key_exists('id_category', $_GET) || !ctype_digit($_GET['id_category']
 }
 
 // Ici je sais que j'ai bien mon paramètre id dans l'URL et que c'est un nombre
-$categoryId = $_GET['id_catégory'];
+$categoryId = $_GET['id_category'];
 
 // Initialisations
 $errors = []; // Tableau qui contiendra les erreurs
@@ -62,4 +62,4 @@ if (!empty($_POST)) {
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'admin/edit_category';
-include '../templates/base.phtml'; 
+include '../templates/admin/base.phtml'; 

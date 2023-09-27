@@ -13,13 +13,21 @@
 </thead>
 <tbody>
 <?php 
-    foreach ($categories as $category): ?>
+    foreach ($categories as $idCategory => $category): ?>
         <tr class="fw-normal">
             <td class="align-middle">
                 <span><?=htmlspecialchars($category['id_category']);?></span>
             </td>
             <td class="align-middle">
                 <span><?=htmlspecialchars($category['title_category']);?></span>
+            </td>
+            <td class="align-middle">
+                <a href=<?="/admin/category/edit?id_category={$idCategory}"?> data-mdb-toggle="tooltip" title="Modifier">
+                    <i class="fa-solid fa-pen-to-square fa-lg text-secondary me-5"></i>
+                </a>
+                <a href="/admin/category/delete" data-mdb-toggle="tooltip" title="Supprimer">
+                    <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                </a>
             </td>
     <?php endforeach; ?>
 </tbody>

@@ -15,7 +15,7 @@
   <th scope="col">Les +</th>
   <th scope="col">Caractéristiques</th>
   <th scope="col">Dimensions</th>
-  <th scope="col">Precisions</th>
+  <th scope="col">Précisions</th>
   <th scope="col">N° Catégorie</th>
   <th scope="col">Technique utilisée</th>
 
@@ -57,6 +57,14 @@
             </td>
             <td class="align-middle">
                 <span><?=htmlspecialchars($product['id_technic']);?></span>
+            </td>
+            <td class="align-middle">
+                <a href="/edit-product?id=9" data-mdb-toggle="tooltip" title="Edit">
+                    <i class="fa-solid fa-pen-to-square fa-lg text-secondary me-auto"></i>
+                </a> <hr>
+                <a href="/delete-product?id=9" data-mdb-toggle="tooltip" title="Remove">
+                    <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                </a>
             </td>
     <?php endforeach; ?>
 </tbody>

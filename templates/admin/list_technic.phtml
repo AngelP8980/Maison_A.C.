@@ -21,6 +21,14 @@
             <td class="align-middle">
                 <span><?=htmlspecialchars($technic['title_technic']);?></span>
             </td>
+            <td class="align-middle">
+                <a href="/edit-technic?id=9" data-mdb-toggle="tooltip" title="Edit">
+                    <i class="fa-solid fa-pen-to-square fa-lg text-secondary me-5"></i>
+                </a>
+                <a href="/delete-tchnic?id=9" data-mdb-toggle="tooltip" title="Remove">
+                    <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                </a>
+            </td>
     <?php endforeach; ?>
 </tbody>
 </table>

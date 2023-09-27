@@ -42,7 +42,7 @@ header nav a{
     padding: 10px;
 }
 
-.navBarMenu a {
+.navBarMenu a{
     color: black;
     font-family: 'Overlock SC', cursive;
     font-size: 40px;
@@ -50,8 +50,9 @@ header nav a{
     margin: auto;
 }
 
-a {
+a{
     text-decoration: none!important;
+    pointer-events: fill;
 }
 /*MAIN HOME*/
 .container{
