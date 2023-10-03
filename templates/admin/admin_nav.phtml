@@ -1,0 +1,51 @@
+<!-- Barre de navigation du Dashboard ADMIN -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="<?=buildUrl('admin')?>"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dashboard Administrateur</font></font></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Basculer la navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle show" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                Catégories
+              </font></font></a>
+              <ul class="dropdown-menu show" data-bs-popper="static">
+                <li><a class="dropdown-item" href="<?=buildUrl('admin_list_category')?>"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liste</font></font></a></li>
+                <li><a class="dropdown-item" href="<?=buildUrl('admin_add_category')?>"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter</font></font></a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle show" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              Techniques
+            </font></font></a>
+            <ul class="dropdown-menu show" data-bs-popper="static">
+              <li><a class="dropdown-item" href="<?=buildUrl('admin_list_technic')?>"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liste</font></font></a></li>
+              <li><a class="dropdown-item" href="<?=buildUrl('admin_add_technic')?>"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter</font></font></a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle show" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            Produits
+          </font></font></a>
+          <ul class="dropdown-menu show" data-bs-popper="static">
+            <li><a class="dropdown-item" href="<?=buildUrl('admin_list_product')?>"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liste</font></font></a></li>
+            <li><a class="dropdown-item" href="<?=buildUrl('admin_add_product')?>"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter</font></font></a></li>
+          </ul>
+        </li>
+          </ul>
+          <form class="d-flex" role="disconnection">
+          <?php if (isConnected()): ?>
+            <a href="<?= buildUrl('logout'); ?>">
+              <button class="btn btn-outline-primary" type="submit">Déconnexion</button>
+            
+            </a>
+           
+        <?php endif; ?>
+        </form>
+          
+          
+        </div>
+      </div>
+    </nav>

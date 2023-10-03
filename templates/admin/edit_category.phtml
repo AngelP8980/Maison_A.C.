@@ -1,21 +1,15 @@
 <!-- FORM MODIFICATION CATEGORIE -->
 
-<!-- Affichage du message flash le cas échéant -->
-<?php if ($flashMessage): ?>
-    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
-<?php endif; ?>
-
-
 
 <div class="text-center pt-3 pb-2">
     <h2 class="my-4">Modifier une catégorie</h2>
 </div>
 
-<form action="<?=buildUrl('admin_edit_category')?>" method="POST" >
+<form action="<?=buildUrl('admin_edit_category', ['id_category' => $categoryId])?>" method="POST" >
     <fieldset>
         <div class="mt-4 p-5">
             <label for="title_category">Titre de la catégorie</label>
-            <input class="form-control" type="text" name="title_category" id="title_category" value="<?=htmlspecialchars($title_category);?>">
+            <input class="form-control" type="text" name="title_category" id="title_category" value="<?=htmlspecialchars($title);?>">
             <?php if (isset($errors['title_category'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['title_category']);?></p>
             <?php endif; ?>

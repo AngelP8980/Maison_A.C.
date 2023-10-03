@@ -29,16 +29,16 @@ class UserModel extends AbstractModel {
     /** 
      * Insère un utilisateur en base de données
      */
-    function insertUser(string $firstname, string $lastname, string $email, string $password)
+    function insertUser(string $firstname, string $lastname, string $email, string $password, string $phone, bool $isAdmin)
     {
         // Hashage du mot de passe
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         // Insertion des données 
-        $sql = 'INSERT INTO user (firstname, lastname, email, password, createdAt)
-                VALUES (?, ?, ?, ?, NOW())';
+        $sql = 'INSERT INTO user (firstname, lastname, email, password, phone, isAdmin, createdAt)
+                VALUES (?, ?, ?, ?, ?, ?, NOW())';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$firstname, $lastname, $email, $passwordHash]);
+        $pdoStatement->execute([$firstname, $lastname, $email, $passwordHash, $phone, $isAdmin]);
     }
 }

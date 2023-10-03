@@ -1,9 +1,5 @@
 <!-- FORM AJOUT PRODUIT -->
 
-<!-- Affichage du message flash le cas échéant -->
-<?php if ($flashMessage): ?>
-    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
-<?php endif; ?>
 
 <div class="text-center pt-3 pb-2">
     <h2 class="my-4">Ajouter un produit</h2>
@@ -19,7 +15,7 @@
             <?php endif; ?>
         </div>
         <div class="p-4">
-            <label for="accessories">Accessoires liés au produit</label>
+            <label for="accessories">Accessoires fournis avec produit</label>
             <textarea class="form-control" type="text-area" name="accessories" id="accessories" rows="4" cols="50" value="<?=htmlspecialchars($accessories ?? "");?>"></textarea>
             <?php if (isset($errors['accessories'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['accessories'] ?? "");?></p>
@@ -28,22 +24,20 @@
         
         <div class="p-4">
             <label for="title_category">Quelle catégorie pour ce produit ?</label>
-       
                 <select name="category" id="category-select">
-                    <option value="">--Choisissez une catégorie--</option>
-                                        
-                    <?php foreach ($categories as $value){ ?>
+                    <option value="">--Choisissez une catégorie--</option>             
+                        <?php foreach ($categories as $value){ ?>
                         <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
                             <option value=<?=$value['id_category']?>><?=htmlspecialchars($value['title_category'])?> </option>
                     <?php }  ?>
                 </select>
                     <?php if (isset($errors['category'])): ?>
-                    <p class="alert alert-danger"><?=htmlspecialchars($errors['category']);?></p>
+                        <p class="alert alert-danger"><?=htmlspecialchars($errors['category']);?></p>
                 <?php endif; ?>
         </div>
         <div class="p-4">
-            <label for="technic">Technique utilisée</label>
-                <select name="technic" id="technic">
+            <label for="technic">Technique de fabrication utilisée</label>
+                <select name="technic" id="technic-select">
                     <option value="">--Choisissez une technique--</option>
                     <?php foreach ($technics as $value){ ?>
                         <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->

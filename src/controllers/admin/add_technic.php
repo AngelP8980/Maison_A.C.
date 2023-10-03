@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\TechnicModel;
 
@@ -42,7 +48,7 @@ if (!empty($_POST)) {
         addFlash('La technique a bien été créée').
 
         // Redirection
-        header('Location: /admin/technic/add');
+        header('Location: ' . buildUrl('admin_add_technic'));
         exit;
     }
 }

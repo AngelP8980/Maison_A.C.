@@ -1,73 +1,104 @@
 <!-- FORM MODIFICATION PRODUIT -->
 
-<!-- Affichage du message flash le cas échéant -->
-<?php if ($flashMessage): ?>
-    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
-<?php endif; ?>
 
 <div class="text-center pt-3 pb-2">
     <h2 class="my-4">Modifier un produit</h2>
 </div>
 
-<form action="<?=buildUrl('admin_edit_product')?>" method="POST" >
+<form action="<?=buildUrl('admin_edit_product', ['id_product' => $productId])?>" method="POST" >
     <fieldset>
         <div class="mt-4 p-5">
             <label for="title_product">Titre du produit</label>
-            <input class="form-control" type="text" name="title_product" id="title_product" value="<?=htmlspecialchars($title_product);?>">
+            <input class="form-control" type="text" name="title_product" id="title_product" value="<?=htmlspecialchars($title);?>">
             <?php if (isset($errors['title_product'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['title_product']);?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
-            <label for="accessories">Accessoires</label>
-            <input class="form-control" type="text" name="accessories" id="accessories" value="<?=htmlspecialchars($accessories);?>">
+            <label for="accessories">Accessoires fournis avec le produit</label>
+            <textarea class="form-control" type="text-area" name="accessories" id="accessories"  rows="4" cols="50" value="<?=htmlspecialchars($accessories);?>"></textarea>
             <?php if (isset($errors['accessories'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['accessories']);?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
-            <label for="price">Prix</label>
+            <label for="title_category">Quelle catégorie pour ce produit ?</label>
+            <select name="category" id="category-select">
+                <option value="">--Choisissez une catégorie--</option>                     
+                    <?php foreach ($categories as $value){ ?>
+                        <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
+                            <option value=<?=$value['id_category']?>><?=htmlspecialchars($value['title_category'])?> </option>
+                    <?php }  ?>
+            </select>
+                <?php if (isset($errors['category'])): ?>
+                    <p class="alert alert-danger"><?=htmlspecialchars($errors['category']);?></p>
+                <?php endif; ?> 
+            <input class="form-control" type="text" name="id_category" id="id_category" value="<?=htmlspecialchars($category);?>">
+            <?php if (isset($errors['id_category'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['id_category']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="mt-4 p-5">
+            <label for="technic">Technique de fabrication utilisée</label>
+            <select name="technic" id="technic-select">
+                <option value="">--Choisissez une technique--</option>                     
+                    <?php foreach ($technics as $value){ ?>
+                        <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
+                            <option value=<?=$value['id_technic']?>><?=htmlspecialchars($value['title_technic'])?> </option>
+                    <?php }  ?>
+            </select>
+                <?php if (isset($errors['technic'])): ?>
+                    <p class="alert alert-danger"><?=htmlspecialchars($errors['technic']);?></p>
+                <?php endif; ?> 
+            <input class="form-control" type="text" name="id_technic" id="id_technic" value="<?=htmlspecialchars($technic);?>">
+            <?php if (isset($errors['id_technic'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['id_technic']);?></p>
+            <?php endif; ?>
+        </div>
+
+        <div class="mt-4 p-5">
+            <label for="price">Prix du produit</label>
             <input class="form-control" type="number" name="price" id="price" value="<?=htmlspecialchars($price);?>">
             <?php if (isset($errors['price'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['price']);?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
-            <label for="description">Description</label>
-            <input class="form-control" type="text" name="description" id="description" value="<?=htmlspecialchars($description);?>">
+            <label for="description">Description du produit</label>
+            <input class="form-control" type="text-area" name="description" id="description" value="<?=htmlspecialchars($description);?>">
             <?php if (isset($errors['description'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['description']);?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
-            <label for="the_most">Les +</label>
-            <input class="form-control" type="text" name="the_most" id="the_most" value="<?=htmlspecialchars($the_most);?>">
+            <label for="the_most">Les + du produit</label>
+            <input class="form-control" type="text-area" name="the_most" id="the_most" value="<?=htmlspecialchars($the_most);?>">
             <?php if (isset($errors['the_most'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['the_most']);?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
-            <label for="features">Caractéristiques</label>
-            <input class="form-control" type="text" name="features" id="features" value="<?=htmlspecialchars($features);?>">
+            <label for="features">Les caractéristiques du produit</label>
+            <input class="form-control" type="text-area" name="features" id="features" value="<?=htmlspecialchars($features);?>">
             <?php if (isset($errors['features'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['features']);?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
-            <label for="dimensions">Dimensions</label>
-            <input class="form-control" type="text" name="dimensions" id="dimensions" value="<?=htmlspecialchars($dimensions);?>">
+            <label for="dimensions">Les dimensions du produit</label>
+            <input class="form-control" type="text-area" name="dimensions" id="dimensions" value="<?=htmlspecialchars($dimensions);?>">
             <?php if (isset($errors['dimensions'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['dimensions']);?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
-            <label for="precision_description">Précisions</label>
-            <input class="form-control" type="text" name="precision_description" id="precision_description" value="<?=htmlspecialchars($precision_description);?>">
+            <label for="precision_description">Précisions sur le produit</label>
+            <input class="form-control" type="text-area" name="precision_description" id="precision_description"  value="<?=htmlspecialchars($precision_description);?>">
             <?php if (isset($errors['precision_description'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['precision_description']);?></p>
             <?php endif; ?>
         </div>
-        <div class="p-2">
+        <div class="p-2 text-center">
             <input class="btn btn-primary" type="submit" value="Valider la modification du produit">
         </div>
     </fieldset>

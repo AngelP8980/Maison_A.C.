@@ -69,7 +69,7 @@ class CategoryModel extends AbstractModel {
     {
        
         // Préparation de la requête de sélection
-        $sql = 'SELECT title_category 
+        $sql = 'SELECT title_category, id_category 
                 FROM category AS C
                 WHERE id_category = ?';
 
@@ -91,15 +91,16 @@ class CategoryModel extends AbstractModel {
     /** 
      * Modifie une catégorie en base de données
      */
-    function editCategory(string $title_category)
+    function editCategory(int $categoryId, string $title_category)
     {
         // Insertion des données dans la base de données
         $sql = 'UPDATE category 
                 SET title_category = ?
-                WHERE id = ?';
+                WHERE id_category = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title_category]);
+        $pdoStatement->execute([$title_category, $categoryId]);
+
     }
 
      /**
@@ -110,7 +111,7 @@ class CategoryModel extends AbstractModel {
     {
        
         // Préparation de la requête SQL de suppression
-        $sql = 'DELETE FROM category WHERE id = ?';
+        $sql = 'DELETE FROM category WHERE id_category = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
         

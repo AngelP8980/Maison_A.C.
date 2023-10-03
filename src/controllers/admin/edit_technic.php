@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\TechnicModel;
 
@@ -17,7 +23,7 @@ $errors = []; // Tableau qui contiendra les erreurs
 
 // Sélection de la technique à modifier dans la base de données à partir de son id
 $technicModel = new TechnicModel();
-$technic = $technicModel->getOneTechnicById($tehnicId);
+$technic = $technicModel->getOneTechnicById($technicId);
 
 // la technique existe-t-elle bien ?
 if (!$technic) {
@@ -34,7 +40,6 @@ $title = $technic['title_technic'];
 if (!empty($_POST)) {
 
     // On récupère les données du formulaire
-    $id = trim($_POST['id_technic']);
     $title = trim($_POST['title_technic']);
    
     // Validation des données
@@ -46,13 +51,13 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion de la technique en base de données
-        $technicModel->editTechnic($id, $title);
+        $technicModel->editTechnic($technicId, $title);
 
         // Ajouter un message flash
         addFlash('La technique a bien été modifiée.');
 
         // Redirection 
-        header('Location: /');
+        header('Location: ' . buildUrl('admin_list_technic'));
         exit;
     }
 }
@@ -62,4 +67,4 @@ if (!empty($_POST)) {
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'admin/edit_technic';
-include '../templates/base.phtml'; 
+include '../templates/admin/base.phtml'; 

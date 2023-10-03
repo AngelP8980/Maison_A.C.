@@ -11,6 +11,7 @@ $errors = []; // Tableau qui contiendra les erreurs
 $firstname = '';
 $lastname = '';
 $email = '';
+$phone = '';
 
 // Si le formulaire est soumis...
 if (!empty($_POST)) {
@@ -19,6 +20,7 @@ if (!empty($_POST)) {
     $firstname = trim($_POST['firstname']); 
     $lastname = trim($_POST['lastname']);
     $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
     $password = $_POST['password'];
     $passwordConfirm = $_POST['password-confirm'];
 
@@ -35,12 +37,16 @@ if (!empty($_POST)) {
         $errors['email'] = 'Le champ "email" n\'est pas valide';
     }
 
+    if (!$phone) {
+        $errors['phone'] = 'Le champ "Téléphone" est obligatoire';
+    }
+
     if (strlen($password) < PASSWORD_MIN_LENGTH) {
         $errors['password'] = 'Le mot de passe doit contenir au moins 8 caractères';
     }
 
     if ($password != $passwordConfirm) {
-        $errors['password-confirm'] = 'La confirmation du mot de passe doit ne correspond pas';
+        $errors['password-confirm'] = 'La confirmation du mot de passe ne correspond pas';
     }
 
     $userModel = new UserModel();
@@ -52,7 +58,7 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion de l'utilisateur en base de données
-        $userModel->insertUser($firstname, $lastname, $email, $password);
+        $userModel->insertUser($firstname, $lastname, $email, $password, $phone, $isAdmin);
 
         // Message flash
         addFlash('Votre compte a bien été créé').

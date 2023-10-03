@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * On définit dans le tableau associatif $routes lal iste de nos routes.
+ * On définit dans le tableau associatif $routes la liste de nos routes.
  * Pour chaque route, on définit : 
  * - son nom 
  * - path (qui apparaît dans l'URL)
@@ -52,6 +52,12 @@ $routes = [
         'controller' => 'admin/edit_category.php'
     ],
 
+    // Suppression d'une catégorie
+    'admin_delete_category' => [
+        'path' => '/admin/category/delete',
+        'controller' => 'admin/delete_category.php'
+    ],
+
      // Création de techniques
      'admin_add_technic' => [
         'path' => '/admin/technic/add',
@@ -61,7 +67,13 @@ $routes = [
     // Modification d'une technique
     'admin_edit_technic' => [
         'path' => '/admin/technic/edit',
-        'controller' => 'admin/edit_tehnic.php'
+        'controller' => 'admin/edit_technic.php'
+    ],
+    
+    // Suppression d'une technique
+    'admin_delete_technic' => [
+        'path' => '/admin/technic/delete',
+        'controller' => 'admin/delete_technic.php'
     ],
 
     // Création de produits
@@ -74,6 +86,12 @@ $routes = [
     'admin_edit_product' => [
         'path' => '/admin/product/edit',
         'controller' => 'admin/edit_product.php'
+    ],
+
+    // Suppression d'un produit
+    'admin_delete_product' => [
+        'path' => '/admin/product/delete',
+        'controller' => 'admin/delete_product.php'
     ],
 
     // Liste des catégories

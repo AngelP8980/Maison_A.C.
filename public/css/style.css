@@ -11,6 +11,17 @@ body{
     height: 30%;
     margin-left: 10px;
 }
+.dashboardTitre{
+    font-family: 'Overlock SC', cursive;
+    font-size: 40px;
+    color: #b308cf;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none!important;
+
+}
 /*HEADER NAV*/
 .headerNav{
     display: flex;
@@ -18,14 +29,21 @@ body{
     align-items: center;
     width: 100%;
     justify-content: space-evenly;
+    font-family: 'Overlock Bold 700', cursive;
+    font-size: 24px;
 }
 
-header nav a{
-    color: black;
+header nav {
     font-family: 'Overlock Bold 700', cursive;
     font-size: 24px;
     padding: 10px;
     margin: 2px;
+}
+
+.navconnect{
+    color: #000000;
+    font-family: 'Overlock Bold 700', cursive;
+    font-size: 24px;
 }
 
 .aId{
@@ -62,7 +80,16 @@ a{
 .imgAccueil{
     width: 100%;
 }
-
+.homeTitle{
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 46px;
+    color: #d3caca;
+    background-color: #4e3452;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .text{
     font-family: 'Reenie Beanie', cursive;
     font-size: 46px;
@@ -117,6 +144,24 @@ h3{
 /*MAIN PRODUCT*/
 
 /*MAIN CONTACT*/
+.FormTitre{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.section-bas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.section-bas-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
 
 /*FOOTER*/
 .footer{

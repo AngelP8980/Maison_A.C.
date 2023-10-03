@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\CategoryModel;
 
@@ -34,7 +40,6 @@ $title = $category['title_category'];
 if (!empty($_POST)) {
 
     // On récupère les données du formulaire
-    $id = trim($_POST['id_category']);
     $title = trim($_POST['title_category']);
    
     // Validation des données
@@ -46,13 +51,13 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion de la catégorie en base de données
-        $categoryModel->editCategory($id, $title);
+        $categoryModel->editCategory($categoryId, $title);
 
         // Ajouter un message flash
         addFlash('La catégorie a bien été modifiée.');
 
         // Redirection 
-        header('Location: /');
+        header('Location: ' . buildUrl('admin_list_category'));
         exit;
     }
 }

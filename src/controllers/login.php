@@ -20,14 +20,19 @@ if(!empty($_POST)) {
     else {
 
         // On enregistre les données de l'utilisateur dans la session
-        registerUser($user['id'], $user['email'], $user['firstname'], $user['lastname']);
+        registerUser($user['id'], $user['firstname'], $user['lastname'], $user['email'], $user['phone'], $user['isAdmin']);
     
         // Message flash
         addFlash('Connexion réussie !');
 
         // Redirection
-        header('Location: /');
-        exit;
+        if ($user['isAdmin']) {
+
+            header('Location: ' .  buildUrl('admin'));
+            exit;
+        }
+            header('Location: ' .  buildUrl('home'));
+            exit;
     }
 }
 

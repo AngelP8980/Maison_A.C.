@@ -26,23 +26,7 @@ class TechnicModel extends AbstractModel {
         return $technic;
     }
 
-    function getTechnicAll(): array 
-    {
-        // Préparation de la requête
-        $sql = 'SELECT * FROM technic';
-        $pdoStatement = self::$pdo->prepare($sql);
-
-        // Exécution de la requête
-        $pdoStatement->execute([]);
-        // Récupération du résultat 
-        $technics = $pdoStatement->fetchAll();
-        if (!$technics) {
-            return [];
-        }
-        return $technics;
-    }
-
-    /** 
+     /** 
      * Insère la technique en base de données
      */
     function insertTechnic(string $title_technic)
@@ -56,38 +40,38 @@ class TechnicModel extends AbstractModel {
         $pdoStatement->execute([$title_technic]);
     }
 
-    /** 
-     * Cherche toutes les catégories en base de données
+     /** 
+     * Cherche toutes les techniques en base de données
      */
-    function getCategoryAll(): array 
+    function getTechnicAll(): array 
     {
         // Préparation de la requête
-        $sql = 'SELECT * FROM category';
+        $sql = 'SELECT * FROM technic';
         $pdoStatement = self::$pdo->prepare($sql);
 
         // Exécution de la requête
         $pdoStatement->execute([]);
-        
+
         // Récupération du résultat 
-        $categories = $pdoStatement->fetchAll();
-        if (!$categories) {
+        $technics = $pdoStatement->fetchAll();
+        if (!$technics) {
             return [];
         }
-        return $categories;
+        return $technics;
     }
 
-    /**
+     /**
      * Sélectionne une technique à partir de son id
-     * @param int $ctechnicId L'id de la technique que je souhaite sélectionner
-     * @return array La y=technique sélectionnée
+     * @param int $technicId L'id de la technique que je souhaite sélectionner
+     * @return array La technique sélectionnée
      */
     function getOneTechnicById(int $technicId): array
     {
        
         // Préparation de la requête de sélection
-        $sql = 'SELECT title_technic 
+        $sql = 'SELECT title_technic, id_technic
                 FROM technic AS T
-                WHERE T.id = ?';
+                WHERE id_technic = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
         
@@ -107,15 +91,15 @@ class TechnicModel extends AbstractModel {
     /** 
      * Modifie une technique en base de données
      */
-    function editTechnic(string $title)
+    function editTechnic(int $technicId, string $title_technic)
     {
         // Insertion des données dans la base de données
         $sql = 'UPDATE technic 
                 SET title_technic = ?
-                WHERE id = ?';
+                WHERE id_technic = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title]);
+        $pdoStatement->execute([$title_technic, $technicId]);
     }
 
      /**
@@ -126,7 +110,7 @@ class TechnicModel extends AbstractModel {
     {
        
         // Préparation de la requête SQL de suppression
-        $sql = 'DELETE FROM technic WHERE id = ?';
+        $sql = 'DELETE FROM technic WHERE id_technic = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
         

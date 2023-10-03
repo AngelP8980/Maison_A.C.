@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\TechnicModel;
 

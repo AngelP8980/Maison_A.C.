@@ -1,24 +1,20 @@
 <!-- FORM MODIFICATION TECHNIQUE -->
 
-<!-- Affichage du message flash le cas échéant -->
-<?php if ($flashMessage): ?>
-    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
-<?php endif; ?>
 
 <div class="text-center pt-3 pb-2">
     <h2 class="my-4">Modifier une technique</h2>
 </div>
 
-<form action="<?=buildUrl('admin_edit_technic')?>" method="POST" >
+<form action="<?=buildUrl('admin_edit_technic', ['id_technic' => $technicId])?>" method="POST" >
     <fieldset>
         <div class="mt-4 p-5">
             <label for="title_technic">Titre de la technique</label>
-            <input class="form-control" type="text" name="title_technic" id="title_technic" value="<?=htmlspecialchars($title_technic);?>">
-            <?php if (isset($errors['title_category'])): ?>
+            <input class="form-control" type="text" name="title_technic" id="title_technic" value="<?=htmlspecialchars($title);?>">
+            <?php if (isset($errors['title_technic'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['title_technic']);?></p>
             <?php endif; ?>
         </div>
-        <div class="p-2">
+        <div class="p-2 text-center">
             <input class="btn btn-primary" type="submit" value="Valider la modification de la technique">
         </div>
     </fieldset>

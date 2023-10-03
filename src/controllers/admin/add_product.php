@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\ProductModel;
 use App\Model\CategoryModel;
@@ -89,7 +95,7 @@ if (!empty($_POST)) {
         addFlash("Le produit a bien été créé").
 
         // Redirection
-        header('Location: /admin/product/add');
+        header('Location: ' . buildUrl('admin_add_product'));
         exit;
     }
 }

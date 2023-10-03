@@ -36,11 +36,11 @@ class ProductModel extends AbstractModel {
     {
     
         // Insertion des données 
-        $sql = 'INSERT INTO product (title_product, accessories, price, description, the_most, features, dimensions, precision_description, id_category, id_technic, createdAt)
+        $sql = 'INSERT INTO product (title_product, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description, createdAt)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title_product, $accessories, $price, $description, $the_most, $features, $dimensions, $precision_description, $id_category, $id_technic]);
+        $pdoStatement->execute([$title_product, $accessories,$id_category, $id_technic, $price, $description, $the_most, $features, $dimensions, $precision_description]);
 
     }
 
@@ -69,13 +69,13 @@ class ProductModel extends AbstractModel {
      * @param int $productId L'id du produit que je souhaite sélectionner
      * @return array Le produit sélectionné
      */
-    function getOneProductById(int $produtId): array
+    function getOneProductById(int $productId): array
     {
        
         // Préparation de la requête de sélection
-        $sql = 'SELECT title_product 
+        $sql = 'SELECT title_product, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description
                 FROM product AS P
-                WHERE P.id = ?';
+                WHERE id_product = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
         
@@ -83,27 +83,27 @@ class ProductModel extends AbstractModel {
         $pdoStatement->execute([$productId]);
 
         // Récupération et retour du résultat de la requête SQL
-        $category = $pdoStatement->fetch();
+        $product = $pdoStatement->fetch();
 
         if (!$product) {
             return [];
         }
 
-        return $category;
+        return $product;
     }
 
     /** 
      * Modifie un produit en base de données
      */
-    function editProduct(string $title)
+    function editProduct(int $productId, string $title_product, string $accessories, string $category, string $technic, float $price, string $description, string $the_most, string $features, string $dimensions, string $precision_description)
     {
         // Insertion des données dans la base de données
         $sql = 'UPDATE product 
-                SET title_product = ?
-                WHERE id = ?';
+                SET title_product = ?, accessories = ?, id_category = ?, id_technic = ?, price = ?, description = ?, the_most = ?, features = ?, dimensions = ?, precision_description = ?
+                WHERE id_product = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title]);
+        $pdoStatement->execute([$title_product, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description, $productId]);
     }
 
      /**
@@ -114,7 +114,7 @@ class ProductModel extends AbstractModel {
     {
        
         // Préparation de la requête SQL de suppression
-        $sql = 'DELETE FROM product WHERE id = ?';
+        $sql = 'DELETE FROM product WHERE id_product = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
         

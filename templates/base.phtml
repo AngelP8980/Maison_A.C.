@@ -33,29 +33,29 @@
         <!-- MODE CONNECTE -->
         <nav class="headerNav">
         <?php if (isConnected()): ?>
-            <a href="/logout">
+            <a class="navconnect" href="<?=buildUrl('logout')?>">
             Déconnexion
             </a>
         <?php else: ?>
             <!-- MODE NON CONNECTE -->
-            <a href="/signup">
+            <a class="navconnect" href="<?=buildUrl('signup')?>">
                 Créer un compte
             </a>
-            <a href="/login" class="aId">
+            <a href="<?=buildUrl('login')?>" class="aId">
                 S'identifier
             </a>
         <?php endif; ?>
-            <a href="/">Panier</a>
-            <a href="/">
+            <a class="navconnect" href="/">Panier</a>
+            <a class="navconnect" href="/">
                 <i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
         </nav>
     </header>
 
     <!-- NavBar du menu -->
     <nav class="navBarMenu">
-        <a href="/">Catalogue</a>
-        <a href="/">La Maison</a>
-        <a href="/">Contact</a>
+        <a href="<?=buildUrl('catalog')?>">Catalogue</a>
+        <a href="<?=buildUrl('home')?>">La Maison</a>
+        <a href="<?=buildUrl('contact')?>">Contact</a>
     </nav>
 
     
@@ -63,6 +63,7 @@
 <?php include '../templates/' . $template . '.phtml';?>
     
 </body>
+
 <!-- Footer -->
 <footer class="footer">
     <div class="flex">

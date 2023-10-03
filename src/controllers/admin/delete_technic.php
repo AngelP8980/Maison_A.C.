@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\TechnicModel;
 
@@ -10,7 +16,7 @@ if (!array_key_exists('id_technic', $_GET) || !ctype_digit($_GET['id_technic']))
 }
 
 // Ici je sais que j'ai bien mon paramètre id dans l'URL et que c'est un nombre
-$categoryId = $_GET['id_technic'];
+$technicId = $_GET['id_technic'];
 
 // Sélection de la technique à modifier dans la base de données à partir de son id
 $technicModel = new TechnicModel();
@@ -29,5 +35,10 @@ $technicModel->deleteTechnic($technicId);
 addFlash('La technique a bien été supprimée');
 
 // Redirection
-header('Location: /');
+header('Location: ' . buildUrl('admin_list_technic'));
 exit;
+
+
+// Affichage du formulaire : inclusion du fichier de template
+$template = 'admin/delete_technic';
+include '../templates/admin/base.phtml'; 

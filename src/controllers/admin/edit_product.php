@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\ProductModel;
 
@@ -30,8 +36,8 @@ if (!$product) {
 $id = $product['id_product'];
 $title = $product['title_product'];
 $accessories = $product['accessories'];
-$id_category = $product['id_category'];
-$id_technic = $product['id_technic'];
+$category = $product['id_category'];
+$technic = $product['id_technic'];
 $price = $product['price'];
 $description = $product['description'];
 $the_most = $product['the_most'];
@@ -43,11 +49,10 @@ $precision_description = $product['precision_description'];
 if (!empty($_POST)) {
 
     // On récupère les données du formulaire
-    $id = trim($_POST['id_product']);
     $title = trim($_POST['title_product']);
     $accessories = trim($_POST['accessories']);
-    $id_category = trim($_POST['id_category']);
-    $id_technic = trim($_POST['id_technic']);
+    $category = trim($_POST['id_category']);
+    $technic = trim($_POST['id_technic']);
     $price = trim($_POST['price']);
     $description = trim($_POST['description']);
     $the_most = trim($_POST['the_most']);
@@ -62,6 +67,12 @@ if (!empty($_POST)) {
     }
     if (!$accessories) {
         $errors['accessories'] = 'Le champ "accessoires" est obligatoire';
+    }
+    if (!$category) {
+        $errors['id_category'] = 'Le champ "catégorie" est obligatoire';
+    }
+    if (!$technic) {
+        $errors['id_technic'] = 'Le champ "technique" est obligatoire';
     }
     if (!$price) {
         $errors['price'] = 'Le champ "prix" est obligatoire';
@@ -86,13 +97,13 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion du produit en base de données
-        $productModel->editProduct($id, $title, $accessories, $id_category, $id_technic, $price, $description, $the_most, $features, $dimensions, $precision_description);
+        $productModel->editProduct($productId, $title, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description);
 
         // Ajouter un message flash
-        addFlash('La produit a bien été modifiée.');
+        addFlash('La produit a bien été modifié.');
 
         // Redirection 
-        header('Location: /');
+        header('Location: ' . buildUrl('admin_list_product'));
         exit;
     }
 }
@@ -102,4 +113,4 @@ if (!empty($_POST)) {
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'admin/edit_product';
-include '../templates/base.phtml'; 
+include '../templates/admin/base.phtml'; 

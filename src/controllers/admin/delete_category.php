@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\CategoryModel;
 
@@ -29,5 +35,10 @@ $categoryModel->deleteCategory($categoryId);
 addFlash('La catégorie a bien été supprimée');
 
 // Redirection
-header('Location: /');
+header('Location: ' . buildUrl('admin_list_category'));
 exit;
+
+
+// Affichage du formulaire : inclusion du fichier de template
+$template = 'admin/delete_category';
+include '../templates/admin/base.phtml'; 

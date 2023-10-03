@@ -90,7 +90,7 @@ function checkCredentials($email, $password): array
 /**
  * Enregistre en session les données de l'utilisateur
  */
-function registerUser(int $userId, string $email, string $firstname, string $lastname, string $phone)
+function registerUser(int $userId, string $email, string $firstname, string $lastname, string $phone, bool $isAdmin)
 {
     // On s'assure que la session est bien démarrée
     initSession();
@@ -100,18 +100,29 @@ function registerUser(int $userId, string $email, string $firstname, string $las
         'email' => $email,
         'firstname' => $firstname,
         'lastname' => $lastname,
-        'phone' => $phone
+        'phone' => $phone,
+        'isAdmin' => $isAdmin
     ];
 }
 
 /**
- * Vérifie si l'utilisateur est connexté ou non
+ * Vérifie si l'utilisateur est connecté ou non
  */
 function isConnected(): bool
 {
     initSession();
 
     return array_key_exists('user', $_SESSION) && isset($_SESSION['user']);
+}
+
+/**
+ * Vérifie si l'administrateur est connecté ou non
+ */
+function isAdmin(): bool
+{
+    initSession();
+
+    return isConnected() && $_SESSION['user']['isAdmin'];
 }
 
 /**

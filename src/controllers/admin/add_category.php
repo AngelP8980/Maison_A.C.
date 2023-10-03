@@ -1,5 +1,11 @@
 <?php 
 
+// Vérification de connexion de l'administrateur
+if (!isAdmin()){
+    echo ('Page introuvable');
+    exit;
+}
+
 // Import de classes
 use App\Model\CategoryModel;
 
@@ -42,7 +48,7 @@ if (!empty($_POST)) {
         addFlash('La catégorie a bien été créée').
 
         // Redirection
-        header('Location: /admin/category/add');
+        header('Location: ' . buildUrl('admin_add_category'));
         exit;
     }
 }
