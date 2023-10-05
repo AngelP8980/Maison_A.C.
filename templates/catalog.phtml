@@ -2,109 +2,118 @@
  <main class="main-catalog">
     <div>
         <img src="img/01_roses.jpg" alt="Image de la catégorie Roses"
-        width="172.51px" height="209.32px">
+        width="220px" height="210px">
         <h3>Les roses</h3>
     </div>
     <div>
         <img src="img/02_lingettes_panier.jpg" alt="Image de la catégorie Lingettes et Paniers"
-        width="149.79px" height="204.67px">
+        width="220px" height="210px">
         <h3>Les lingettes et paniers</h3>
     </div>
     <div>   
         <img src="img/03_acc_cuisine.jpg" alt="Image de la catégorie Accessoires de Cuisine"
-        width="266.94px" height="204.51px">
+        width="220px" height="210px">
         <h3>Les accessoires de cuisine</h3>
     </div>
     <div>
         <img src="img/04_panier_linge.jpg" alt="Image de la catégorie Paniers à Linge"
-        width="150px" height="204.74px">
+        width="220px" height="210px">
         <h3>Les paniers à linge</h3>
     </div>
     <div>
         <img src="img/05_tour_cou.jpg" alt="Image de la catégorie Tours de Cou"
-        width="150px" height="204.74px">
+        width="220px" height="210px">
         <h3>Les tours de cou</h3>
     </div>
     <div>
         <img src="img/06_boîtes.jpg" alt="Image de la catégorie Boîtes"
-        width="150px" height="204.55px">
+        width="220px" height="210px">
         <h3>Les boîtes</h3>
     </div>
     <div>
         <img src="img/07_étui_mouchoirs.jpg" alt="Image de la catégorie Etuis à Mouchoirs"
-        width="150px" height="204px">
+        width="220px" height="210">
         <h3>Les étuis à mouchoirs</h3>
     </div>
     <div>
         <img src="img/08_porte_monnaie.jpg" alt="Image de la catégorie Portes-Monnaie"
-        width="165.5px" height="217.45px">
+        width="220px" height="210px">
         <h3>Les portes-monnaie</h3>
     </div>
     <div>
         <img src="img/09_sac.jpg" alt="Image de la catégorie Sacs"
-        width="179.57px" height="226.13px">
+        width="220px" height="210px">
         <h3>Les sacs</h3>
     </div>
     <div>
         <img src="img/10_support_cartes.jpg" alt="Image de la catégorie Support de Cartes"
-        width="320px" height="220px">
+        width="220px" height="210px">
         <h3>Le support de cartes</h3>
     </div>
     <div>
         <img src="img/11_vide_poches.jpg" alt="Image de la catégorie Vide-Poches"
-        width="181.5px" height="224.67px">
+        width="220px" height="210px">
         <h3>Les vide-poches</h3>
     </div>
     <div>
         <img src="img/12_trousses.jpg" alt="Image de la catégorie Trousses"
-        width="182px" height="224.71px">
+        width="220px" height="210px">
         <h3>Les trousses</h3>
     </div>
     <div>
         <img src="img/13_porte_jeton.jpg" alt="Image de la catégorie Portes-Jetons"
-        width="182px" height="224.71px">
+        width="220px" height="210px">
         <h3>Les portes-jetons</h3>
     </div>
     <div>
         <img src="img/14_berlingots.jpg" alt="Image de la catégorie Berlingots"
-        width="182px" height="224.71px">
-        <h3>Les berlingots</h3>
-        <p>lavande ou romarin</p>
+        width="220px" height="210px">
+        <h3>Les berlingots <br> lavande ou romarin</h3>
     </div>
     <div>
         <img src="img/15_portefeuille.jpg" alt="Image de la catégorie Portefeuilles"
-        width="182px" height="224.71px">
+        width="220px" height="210px">
         <h3>Les portefeuilles</h3>
     </div>
     <div>
         <img src="img/16_jeux_éveil.jpg" alt="Image de la catégorie Jeux d'Eveil"
-        width="182px" height="224.71px">
+        width="220px" height="210px">
         <h3>Les jeux d'éveil</h3>
     </div>
     <div>
         <img src="img/17_amigurumis.jpg" alt="Image de la catégorie Amigurumis"
-        width="182px" height="224.71px">
+        width="220px" height="210px">
         <h3>Les Amigurumis</h3>
     </div>
     <div>
         <img src="img/18_poupées.jpg" alt="Image de la catégorie Poupées"
-        width="182px" height="224.71px">
+        width="220px" height="210px">
         <h3>Les poupées</h3>
     </div>
     <div>
         <img src="img/19_frivolités.jpg" alt="Image de la catégorie Frivolités"
-        width="182px" height="224.71px">
-        <h3>Les frivolité</h3>
+        width="220px" height="210px">
+        <h3>Les frivolités</h3>
     </div>
     <div>
         <img src="img/20_marque_page.jpg" alt="Image de la catégorie Marques_pages"
-        width="182px" height="224.71px">
+        width="220px" height="210px">
         <h3>Les marques-pages</h3>
     </div>
-
 </main>
 
-<!-- Affichage du message flash le cas échéant -->
-<?php if ($flashMessage): ?>
-    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
-<?php endif; ?>
+<section class="newsletter">
+    <div class="nl-inscription">
+        <p class="title-nl">S'inscrire à la newsletter</p>
+        <input class="nl-input" type="mail" name="email" id="email" placeholder="Votre e-mail"><br /><br />
+        <img class="img-nl" src="img/envoyer.png" alt="Icône envoyer">
+        <p class="p-nl">Ne ratez plus nos offres et nouveautés en vous inscrivant à la newsletter !</p>
+    </div>
+    
+    <div class="rs">
+        <p class="title_rs">Retrouvez-nous sur les <br> réseaux sociaux</p>
+        <img src="img/fb.png" alt="Icône Facebook">
+        <img src="img/instagram.png" alt="Icône Instagram">
+        <img src="img/pinterest.png" alt="Icône Pinterest">
+    </div>
+</section>
