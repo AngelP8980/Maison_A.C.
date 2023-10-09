@@ -34,11 +34,5 @@ $categoryModel->deleteCategory($categoryId);
 // Message flash
 addFlash('La catégorie a bien été supprimée');
 
-// Redirection
-header('Location: ' . buildUrl('admin_list_category'));
-exit;
-
-
-// Affichage du formulaire : inclusion du fichier de template
-$template = 'admin/delete_category';
-include '../templates/admin/base.phtml'; 
+// retour JS
+echo json_encode(['idCategory' => $categoryId]);

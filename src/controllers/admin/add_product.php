@@ -24,6 +24,7 @@ const PASSWORD_MIN_LENGTH = 8; // Longueur minimale du mot de passe
 $errors = []; // Tableau qui contiendra les erreurs
 
 $title_product = '';
+$image = '';
 $accessories = '';
 $categories = $categoryModel->getCategoryAll();
 $technics = $technicModel->getTechnicAll();
@@ -39,6 +40,7 @@ if (!empty($_POST)) {
 
     // 1. Récupération des champs du formulaire dans des variables
     $title_product = trim($_POST['title_product']); 
+    $image = $_POST['image'];
     $accessories = trim($_POST['accessories']); 
     $price = floatval(str_replace(',', '.', str_replace('.', '', $_POST['price'])));
     $description = $_POST['description'];
@@ -53,8 +55,11 @@ if (!empty($_POST)) {
     if (!$title_product) {
         $errors['title_product'] = 'Le champ "titre du produit" est obligatoire';
     }
+    if (!$image) {
+        $errors['image'] = 'Le champ "image du produit" est obligatoire';
+    }
     if (!$accessories) {
-        $errors['accessories'] = 'Le champ "Accessoires liés au produit" est obligatoire';
+        $errors['accessories'] = 'Le champ "accessoires liés au produit" est obligatoire';
     }
     if (!$price) {
         $errors['price'] = 'Le champ "prix du produit" est obligatoire';
@@ -75,10 +80,10 @@ if (!empty($_POST)) {
         $errors['precision_description'] = 'Le champ "précisions sur le produit" est obligatoire';
     }
     if (!$category) {
-        $errors['category'] = 'Veuillez séletionner une catégorie';
+        $errors['category'] = 'Veuillez sélectionner une catégorie';
     }
     if (!$technic) {
-        $errors['technic'] = 'Veuillez séletionner une technique';
+        $errors['technic'] = 'Veuillez sélectionner une technique';
     }
     
     if ($productModel->getProductByTitle($title_product)) {
@@ -89,7 +94,7 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion du produit en base de données
-        $productModel->insertProduct($title_product, $accessories, $price, $description, $the_most, $features, $dimensions, $precision_description, $category, $technic);
+        $productModel->insertProduct($title_product, $image, $accessories, $price, $description, $the_most, $features, $dimensions, $precision_description, $category, $technic);
 
         // Message flash
         addFlash("Le produit a bien été créé").

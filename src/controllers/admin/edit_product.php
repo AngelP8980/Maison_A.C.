@@ -35,6 +35,7 @@ if (!$product) {
 // avec les valeurs du produit à modifier
 $id = $product['id_product'];
 $title = $product['title_product'];
+$image = $product['image'];
 $accessories = $product['accessories'];
 $category = $product['id_category'];
 $technic = $product['id_technic'];
@@ -97,7 +98,7 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion du produit en base de données
-        $productModel->editProduct($productId, $title, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description);
+        $productModel->editProduct($productId, $title, $image, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description);
 
         // Ajouter un message flash
         addFlash('La produit a bien été modifié.');

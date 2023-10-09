@@ -32,15 +32,15 @@ class ProductModel extends AbstractModel {
      * Insère le produit en base de données
      */
     function insertProduct(
-        string $title_product, string $accessories, float $price, string $description, string $the_most, string $features, string $dimensions, string $precision_description, int $id_category, int $id_technic)
+        string $title_product, string $image, string $accessories, float $price, string $description, string $the_most, string $features, string $dimensions, string $precision_description, int $id_category, int $id_technic)
     {
     
         // Insertion des données 
-        $sql = 'INSERT INTO product (title_product, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description, createdAt)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
+        $sql = 'INSERT INTO product (title_product, image, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description, createdAt)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title_product, $accessories,$id_category, $id_technic, $price, $description, $the_most, $features, $dimensions, $precision_description]);
+        $pdoStatement->execute([$title_product, $image, $accessories, $id_category, $id_technic, $price, $description, $the_most, $features, $dimensions, $precision_description]);
 
     }
 
@@ -73,7 +73,7 @@ class ProductModel extends AbstractModel {
     {
        
         // Préparation de la requête de sélection
-        $sql = 'SELECT title_product, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description
+        $sql = 'SELECT title_product, image, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description
                 FROM product AS P
                 WHERE id_product = ?';
 
@@ -95,15 +95,15 @@ class ProductModel extends AbstractModel {
     /** 
      * Modifie un produit en base de données
      */
-    function editProduct(int $productId, string $title_product, string $accessories, string $category, string $technic, float $price, string $description, string $the_most, string $features, string $dimensions, string $precision_description)
+    function editProduct(int $productId, string $title_product, string $image, string $accessories, string $category, string $technic, float $price, string $description, string $the_most, string $features, string $dimensions, string $precision_description)
     {
         // Insertion des données dans la base de données
         $sql = 'UPDATE product 
-                SET title_product = ?, accessories = ?, id_category = ?, id_technic = ?, price = ?, description = ?, the_most = ?, features = ?, dimensions = ?, precision_description = ?
+                SET title_product = ?, image = ?, accessories = ?, id_category = ?, id_technic = ?, price = ?, description = ?, the_most = ?, features = ?, dimensions = ?, precision_description = ?
                 WHERE id_product = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title_product, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description, $productId]);
+        $pdoStatement->execute([$title_product, $image, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description, $productId]);
     }
 
      /**

@@ -1,7 +1,8 @@
  <!-- Main page contact -->
 
  <main class="bg-contact">
-    <h1 class="FormTitre">Formulaire de Contact</h1>
+    <h1 class="formTitle">Formulaire de Contact</h1>
+
 
     <!-- Affichage du formulaire de contact -->
     <div class="form-contact-card">
@@ -11,7 +12,10 @@
             <input class="form-contact-input" type="mail" name="email" id="email" placeholder="Votre e-mail"><br /><br />
             <input class="form-contact-input" type="text" name="phone" id="phone" placeholder="Votre n° de téléphone"><br /><br />
             <input class="form-contact-input-message" type="textarea" name="message" id="message" placeholder="Votre message"><br /><br />
-            <input class="form-send" type="submit" name="send" value="Envoyer le message">
+            
+            <div class="div-form-send">
+                <input class="form-send" type="submit" name="send" value="Envoyer le message">
+            </div>
             
             <div id="statusMessage"> 
                 <?php if (!empty($db_msg)) { ?>
@@ -46,7 +50,3 @@
 
 </main>
 
-<!-- Affichage du message flash le cas échéant -->
-<?php if ($flashMessage): ?>
-    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
-<?php endif; ?>

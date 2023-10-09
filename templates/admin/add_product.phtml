@@ -5,13 +5,20 @@
     <h2 class="my-4">Ajouter un produit</h2>
 </div>
 
-<form action="/admin/product/add" method="POST" >
+<form action="<?=buildUrl('admin_add_product')?>" method="POST" >
     <fieldset>
         <div class="p-4">
             <label for="title_product">Titre du produit</label>
             <input class="form-control" type="text" name="title_product" id="title_product" value="<?=htmlspecialchars($title_product);?>">
             <?php if (isset($errors['title_product'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['title_product']);?></p>
+            <?php endif; ?>
+        </div>
+        <div class="p-4">
+            <label class="image_product" for="file">Photo(s) du produit (png, jpg)</label>
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg"  multiple value="<?=htmlspecialchars($image);?>">
+            <?php if (isset($errors['image'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['image']);?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">

@@ -14,9 +14,16 @@
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['title_product']);?></p>
             <?php endif; ?>
         </div>
+        <div class="p-4">
+            <label class="image_product" for="image">Photo du produit</label>
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg"  multiple value="<?=htmlspecialchars($image);?>">
+            <?php if (isset($errors['image'])): ?>
+                <p class="alert alert-danger"><?=htmlspecialchars($errors['image']);?></p>
+            <?php endif; ?>
+        </div>
         <div class="mt-4 p-5">
             <label for="accessories">Accessoires fournis avec le produit</label>
-            <textarea class="form-control" type="text-area" name="accessories" id="accessories"  rows="4" cols="50" value="<?=htmlspecialchars($accessories);?>"></textarea>
+            <input class="form-control" type="text" name="accessories" id="accessories" value="<?=htmlspecialchars($accessories);?>"></input>
             <?php if (isset($errors['accessories'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['accessories']);?></p>
             <?php endif; ?>
