@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 // Vérification de connexion de l'administrateur
-if (!isAdmin()){
+if (!isAdmin()) {
     echo ('Page introuvable');
     exit;
 }
@@ -34,11 +34,5 @@ $technicModel->deleteTechnic($technicId);
 // Message flash
 addFlash('La technique a bien été supprimée');
 
-// Redirection
-header('Location: ' . buildUrl('admin_list_technic'));
-exit;
-
-
-// Affichage du formulaire : inclusion du fichier de template
-$template = 'admin/delete_technic';
-include '../templates/admin/base.phtml'; 
+// retour JS
+echo json_encode(['id' => $technicId]);

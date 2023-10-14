@@ -34,11 +34,5 @@ $productModel->deleteProduct($productId);
 // Message flash
 addFlash('Le produit a bien été supprimé');
 
-// Redirection
-header('Location: ' . buildUrl('admin_list_product'));
-exit;
-
-
-// Affichage du formulaire : inclusion du fichier de template
-$template = 'admin/delete_product';
-include '../templates/admin/base.phtml'; 
+// retour JS
+echo json_encode(['id' => $productId]);

@@ -4,34 +4,37 @@
 <div class="text-center pt-3 pb-2">
     <h2 class="my-4">Liste des techniques</h2>
 
-<table class="table table-striped bg-white">
-<thead>
-<tr>
-  <th scope="col">#id</th>
-  <th scope="col">Titre</th>
-</tr>
-</thead>
-<tbody>
-<?php 
-    foreach ($technics as $technic): ?>
-        <tr class="fw-normal">
-            <td class="align-middle">
-                <span><?=htmlspecialchars($technic['id_technic']);?></span>
-            </td>
-            <td class="align-middle">
-                <span><?=htmlspecialchars($technic['title_technic']);?></span>
-            </td>
-            <td class="align-middle">
-                <a href=<?="/admin/technic/edit?id_technic={$technic['id_technic']}"?> data-mdb-toggle="tooltip" title="Modifier">
-                    <i class="fa-solid fa-pen-to-square fa-lg text-secondary me-5"></i>
-                </a>
-                <a href=<?="/admin/technic/delete?id_technic={$technic['id_technic']}"?> data-mdb-toggle="tooltip" title="Supprimer">
-                    <i class="fas fa-trash-alt fa-lg text-danger"></i>
-                </a>
-            </td>
-    <?php endforeach; ?>
-</tbody>
-</table>
+    <table class="table table-striped bg-white">
+        <thead>
+            <tr>
+                <th scope="col">#id</th>
+                <th scope="col">Titre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($technics as $technic) : ?>
+                <tr class="fw-normal" data-id="<?= $technic['id_technic'] ?>">
+                    <td class="align-middle">
+                        <span><?= htmlspecialchars($technic['id_technic']); ?></span>
+                    </td>
+                    <td class="align-middle">
+                        <span><?= htmlspecialchars($technic['title_technic']); ?></span>
+                    </td>
+                    <td class="align-middle">
+                        <a href=<?= "/admin/technic/edit?id_technic={$technic['id_technic']}" ?> data-mdb-toggle="tooltip" title="Modifier">
+                            <i class="fa-solid fa-pen-to-square fa-lg text-secondary me-5"></i>
+                        </a>
+                        <a class="delete-button" href=<?= "/admin/technic/delete?id_technic={$technic['id_technic']}" ?> data-mdb-toggle="tooltip" title="Supprimer">
+                            <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                        </a>
+                    </td>
+                <?php endforeach; ?>
+        </tbody>
+    </table>
 
 </div>
 
+<script src="<?= asset('js/admin-list-technic.js') ?>">
+
+</script>

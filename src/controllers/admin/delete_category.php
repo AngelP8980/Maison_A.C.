@@ -35,4 +35,4 @@ $categoryModel->deleteCategory($categoryId);
 addFlash('La catégorie a bien été supprimée');
 
 // retour JS
-echo json_encode(['idCategory' => $categoryId]);
+echo json_encode(['id' => $categoryId]);

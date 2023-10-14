@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 // Vérification de connexion de l'administrateur
-if (!isAdmin()){
+if (!isAdmin()) {
     echo ('Page introuvable');
     exit;
 }
@@ -25,14 +25,17 @@ if (!empty($_POST)) {
 
     // 1. Récupération des champs du formulaire dans des variables
     $title_category = trim($_POST['title_category']);
-   
+    $image = $_POST['image'];
+
 
     // 2. Validation des données du formulaire
     if (!$title_category) {
         $errors['title_category'] = 'Le champ "titre de la catégorie" est obligatoire';
     }
+    if (!$image) {
+        $errors['image'] = 'Le champ "image de la catégorie" est obligatoire';
+    }
 
-    
     $categoryModel = new CategoryModel();
     if ($categoryModel->getCategoryByTitle($title_category)) {
         $errors['title_category'] = 'Il existe déjà une catégorie associée à ce titre';
@@ -42,13 +45,13 @@ if (!empty($_POST)) {
     if (empty($errors)) {
 
         // Insertion de la catégorie en base de données
-        $categoryModel->insertCategory($title_category);
+        $categoryModel->insertCategory($title_category, $image);
 
         // Message flash
-        addFlash('La catégorie a bien été créée').
+        addFlash('La catégorie a bien été créée') .
 
-        // Redirection
-        header('Location: ' . buildUrl('admin_add_category'));
+            // Redirection
+            header('Location: ' . buildUrl('admin_add_category'));
         exit;
     }
 }

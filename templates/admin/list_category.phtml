@@ -4,37 +4,41 @@
 <div class="text-center pt-3 pb-2">
     <h2 class="my-4">Liste des catégories</h2>
 
-<table class="table table-striped bg-white">
-<thead>
-<tr>
-  <th scope="col">#id</th>
-  <th scope="col">Titre</th>
-</tr>
-</thead>
-<tbody>
-<?php 
-    foreach ($categories as $category): ?>
-        <tr class="fw-normal" data-id="<?=$category['id_category']?>">
-            <td class="align-middle">
-                <span><?=htmlspecialchars($category['id_category']);?></span>
-            </td>
-            <td class="align-middle">
-                <span><?=htmlspecialchars($category['title_category']);?></span>
-            </td>
-            <td class="align-middle">
-                <a href=<?="/admin/category/edit?id_category={$category['id_category']}"?> data-mdb-toggle="tooltip" title="Modifier">
-                    <i class="fa-solid fa-pen-to-square fa-lg text-secondary me-5"></i>
-                </a>
-                <a class="delete-button" href=<?="/admin/category/delete?id_category={$category['id_category']}"?> data-mdb-toggle="tooltip" title="Supprimer">
-                    <i class="fas fa-trash-alt fa-lg text-danger"></i>
-                </a>
-            </td>
-    <?php endforeach; ?>
-</tbody>
-</table>
+    <table class="table table-striped bg-white">
+        <thead>
+            <tr>
+                <th scope="col">#id</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($categories as $category) : ?>
+                <tr class="fw-normal" data-id="<?= $category['id_category'] ?>">
+                    <td class="align-middle">
+                        <span><?= htmlspecialchars($category['id_category']); ?></span>
+                    </td>
+                    <td class="align-middle">
+                        <span><?= htmlspecialchars($category['title_category']); ?></span>
+                    </td>
+                    <td class="align-middle">
+                        <span><?= htmlspecialchars($category['image']); ?></span>
+                    </td>
+                    <td class="align-middle">
+                        <a href=<?= "/admin/category/edit?id_category={$category['id_category']}" ?> data-mdb-toggle="tooltip" title="Modifier">
+                            <i class="fa-solid fa-pen-to-square fa-lg text-secondary me-5"></i>
+                        </a>
+                        <a class="delete-button" href=<?= "/admin/category/delete?id_category={$category['id_category']}" ?> data-mdb-toggle="tooltip" title="Supprimer">
+                            <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                        </a>
+                    </td>
+                <?php endforeach; ?>
+        </tbody>
+    </table>
 
 </div>
 
-<script src="<?=asset('js/admin-list-category.js')?>">
+<script src="<?= asset('js/admin-list-category.js') ?>">
 
 </script>

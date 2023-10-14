@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 // Vérification de connexion de l'administrateur
-if (!isAdmin()){
+if (!isAdmin()) {
     echo ('Page introuvable');
     exit;
 }
@@ -51,6 +51,7 @@ if (!empty($_POST)) {
 
     // On récupère les données du formulaire
     $title = trim($_POST['title_product']);
+    $image = $_POST['image'];
     $accessories = trim($_POST['accessories']);
     $category = trim($_POST['id_category']);
     $technic = trim($_POST['id_technic']);
@@ -61,10 +62,13 @@ if (!empty($_POST)) {
     $dimensions = trim($_POST['dimensions']);
     $precision_description = trim($_POST['precision_description']);
 
-   
+
     // Validation des données
     if (!$title) {
         $errors['title_product'] = 'Le champ "titre" est obligatoire';
+    }
+    if (!$image) {
+        $errors['image'] = 'Le champ "image" est obligatoire';
     }
     if (!$accessories) {
         $errors['accessories'] = 'Le champ "accessoires" est obligatoire';
@@ -92,7 +96,7 @@ if (!empty($_POST)) {
     }
     if (!$precision_description) {
         $errors['precision_description'] = 'Le champ "précision" est obligatoire';
-    }   
+    }
 
     // Si pas d'erreurs...
     if (empty($errors)) {
@@ -114,4 +118,4 @@ if (!empty($_POST)) {
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'admin/edit_product';
-include '../templates/admin/base.phtml'; 
+include '../templates/admin/base.phtml';

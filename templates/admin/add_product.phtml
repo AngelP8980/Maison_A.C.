@@ -16,7 +16,7 @@
         </div>
         <div class="p-4">
             <label class="image_product" for="file">Photo(s) du produit (png, jpg)</label>
-            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg"  multiple value="<?=htmlspecialchars($image);?>">
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg" value="<?=htmlspecialchars($image);?>">
             <?php if (isset($errors['image'])): ?>
                 <p class="alert alert-danger"><?=htmlspecialchars($errors['image']);?></p>
             <?php endif; ?>

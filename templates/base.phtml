@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&family=Overlock:wght@400;700;900&family=Overpass+Mono&family=Reenie+Beanie&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?=asset('css/styles.css')?>">
+    <link rel="stylesheet" href="<?= asset('css/styles.css') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Over+the+Rainbow&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -30,41 +30,44 @@
 <body>
     <!-- Header -->
     <header class="headerLogo">
-        <img class="logo" src="img/logo.png" alt="Logo Maison A.C." >
+        <img class="logo" src="img/logo.png" alt="Logo Maison A.C.">
 
         <!-- NavBar -->
         <!-- MODE CONNECTE -->
         <nav class="headerNav">
-        <?php if (isConnected()): ?>
-            <a class="navconnect" href="<?=buildUrl('logout')?>">
-            Déconnexion
-            </a>
-        <?php else: ?>
-            <!-- MODE NON CONNECTE -->
-            <a class="navconnect" href="<?=buildUrl('signup')?>">
-                Créer un compte
-            </a>
-            <a href="<?=buildUrl('login')?>" class="aId">
-                S'identifier
-            </a>
-        <?php endif; ?>
+            <?php if (isConnected()) : ?>
+                <a class="navdisconnect" href="<?= buildUrl('logout') ?>">
+                    Déconnexion
+                </a>
+                <a class="navadmin" href="<?= buildUrl('admin') ?>">
+                    Dashboard administrateur
+                </a>
+            <?php else : ?>
+                <!-- MODE NON CONNECTE -->
+                <a class="navconnect" href="<?= buildUrl('signup') ?>">
+                    Créer un compte
+                </a>
+                <a href="<?= buildUrl('login') ?>" class="aId">
+                    S'identifier
+                </a>
+            <?php endif; ?>
             <a class="navconnect" href="/">Panier</a>
             <a class="navconnect" href="/">
-                <i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
+                <i class="fa-solid fa-magnifying-glass"></i> Rechercher</a>
         </nav>
     </header>
 
     <!-- NavBar du menu -->
     <nav class="navBarMenu">
-        <a href="<?=buildUrl('catalog')?>">Catalogue</a>
-        <a href="<?=buildUrl('home')?>">La Maison</a>
-        <a href="<?=buildUrl('contact')?>">Contact</a>
+        <a href="<?= buildUrl('catalog') ?>">Catalogue</a>
+        <a href="<?= buildUrl('home') ?>">La Maison</a>
+        <a href="<?= buildUrl('contact') ?>">Contact</a>
     </nav>
 
-    
-<!-- inclusion du template spécifique à la page affichée -->
-<?php include '../templates/' . $template . '.phtml';?>
-    
+
+    <!-- inclusion du template spécifique à la page affichée -->
+    <?php include '../templates/' . $template . '.phtml'; ?>
+
 </body>
 
 <section class="newsletter">
@@ -74,7 +77,7 @@
         <img class="img-nl" src="img/envoyer.png" alt="Icône envoyer">
         <p class="p-nl">Ne ratez plus nos offres et nouveautés en vous inscrivant à la newsletter !</p>
     </div>
-    
+
     <div class="rs">
         <p class="title_rs">Retrouvez-nous sur les <br> réseaux sociaux</p>
         <div class="icons-rs">
@@ -89,25 +92,25 @@
     <div class="footer-section">
         <section>
             <h2>A propos</h2>
-                <ul>Qui sommes-nous ?</ul>
-                <ul>Nos engagements</ul>
-                <ul>Contactez-nous</ul>
-                <ul>FAQ</ul>    
+            <ul>Qui sommes-nous ?</ul>
+            <ul>Nos engagements</ul>
+            <ul>Contactez-nous</ul>
+            <ul>FAQ</ul>
         </section>
         <section>
             <h2>Mon compte</h2>
-                <ul>Se connecter</ul>
-                <ul>Mes commandes</ul>
-                <ul>Mon panier</ul>
+            <ul>Se connecter</ul>
+            <ul>Mes commandes</ul>
+            <ul>Mon panier</ul>
         </section>
         <section>
             <h2>Infos pratiques</h2>
-                <ul>Politique de gestion des cookies</ul>
-                <ul>Livraisons et retours</ul>
-                <ul>Conditions générales</ul>
-                <ul>Politique de confidentialité</ul>
-                <ul>Mentions légales</ul>
-                <ul>Paiement sécurisé</ul>
+            <ul>Politique de gestion des cookies</ul>
+            <ul>Livraisons et retours</ul>
+            <ul>Conditions générales</ul>
+            <ul>Politique de confidentialité</ul>
+            <ul>Mentions légales</ul>
+            <ul>Paiement sécurisé</ul>
         </section>
     </div>
     <!-- <section class="social">
@@ -123,8 +126,9 @@
     </section> -->
     <section class="copyright">
         <i class="fa-regular fa-copyright"></i>
-        &nbsp;Maison A.C. 2023  |  Créé par AngeLink</section>
-    </footer>
+        &nbsp;Maison A.C. 2023 | Créé par AngeLink
+    </section>
+</footer>
 </footer>
 
 

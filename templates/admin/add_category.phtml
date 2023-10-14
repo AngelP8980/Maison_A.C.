@@ -5,18 +5,25 @@
     <h2 class="my-4">Ajouter une catégorie</h2>
 </div>
 
-<form action="<?=buildUrl('admin_add_category')?>" method="POST" >
+<form action="<?= buildUrl('admin_add_category') ?>" method="POST">
     <fieldset>
         <div class="mt-4 p-5">
             <label for="title_category">Titre de la catégorie</label>
-            <input class="form-control" type="text" name="title_category" id="title_category" value="<?=htmlspecialchars($title_category);?>">
-            <?php if (isset($errors['title_category'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_category']);?></p>
+            <input class="form-control" type="text" name="title_category" id="title_category" value="<?= htmlspecialchars($title_category); ?>">
+            <?php if (isset($errors['title_category'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['title_category']); ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="p-4">
+            <label class="image_product" for="file">Photo(s) de la catégorie (png, jpg)</label>
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg" value="<?= htmlspecialchars($image); ?>">
+            <?php if (isset($errors['image'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['image']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-2 text-center">
             <input class="btn btn-primary" type="submit" value="Valider l'ajout de la catégorie">
         </div>
     </fieldset>
-    
+
 </form>

@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 // Vérification de connexion de l'administrateur
-if (!isAdmin()){
+if (!isAdmin()) {
     echo ('Page introuvable');
     exit;
 }
@@ -35,23 +35,28 @@ if (!$category) {
 // avec les valeurs de la catégorie à modifier
 $id = $category['id_category'];
 $title = $category['title_category'];
+$image = $category['image'];
 
 // Si le formulaire est soumis...
 if (!empty($_POST)) {
 
     // On récupère les données du formulaire
     $title = trim($_POST['title_category']);
-   
+    $image = $_POST['image'];
+
     // Validation des données
     if (!$title) {
         $errors['title_category'] = 'Le champ "titre" est obligatoire';
+    }
+    if (!$image) {
+        $errors['image'] = 'Le champ "image" est obligatoire';
     }
 
     // Si pas d'erreurs...
     if (empty($errors)) {
 
         // Insertion de la catégorie en base de données
-        $categoryModel->editCategory($categoryId, $title);
+        $categoryModel->editCategory($categoryId, $title, $image);
 
         // Ajouter un message flash
         addFlash('La catégorie a bien été modifiée.');
@@ -67,4 +72,4 @@ if (!empty($_POST)) {
 
 // Affichage du formulaire : inclusion du fichier de template
 $template = 'admin/edit_category';
-include '../templates/admin/base.phtml'; 
+include '../templates/admin/base.phtml';

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Définition du namespace
 namespace App\Model;
@@ -6,9 +6,10 @@ namespace App\Model;
 // Import des classes
 use App\Core\AbstractModel;
 
-class CategoryModel extends AbstractModel {
+class CategoryModel extends AbstractModel
+{
 
-    function getCategoryByTitle(string $title_category): array 
+    function getCategoryByTitle(string $title_category): array
     {
         // Préparation de la requête
         $sql = 'SELECT * FROM category WHERE title_category = ?';
@@ -29,21 +30,23 @@ class CategoryModel extends AbstractModel {
     /** 
      * Insère la catégorie en base de données
      */
-    function insertCategory(string $title_category)
-    {
-    
+    function insertCategory(
+        string $title_category,
+        string $image
+    ) {
+
         // Insertion des données 
-        $sql = 'INSERT INTO category (title_category, createdAt)
-                VALUES (?, NOW())';
+        $sql = 'INSERT INTO category (title_category, image, createdAt)
+                VALUES (?, ?, NOW())';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title_category]);
+        $pdoStatement->execute([$title_category, $image]);
     }
 
     /** 
      * Cherche toutes les catégories en base de données
      */
-    function getCategoryAll(): array 
+    function getCategoryAll(): array
     {
         // Préparation de la requête
         $sql = 'SELECT * FROM category';
@@ -51,7 +54,7 @@ class CategoryModel extends AbstractModel {
 
         // Exécution de la requête
         $pdoStatement->execute([]);
-        
+
         // Récupération du résultat 
         $categories = $pdoStatement->fetchAll();
         if (!$categories) {
@@ -67,14 +70,14 @@ class CategoryModel extends AbstractModel {
      */
     function getOneCategoryById(int $categoryId): array
     {
-       
+
         // Préparation de la requête de sélection
-        $sql = 'SELECT title_category, id_category 
+        $sql = 'SELECT title_category, id_category, image 
                 FROM category AS C
                 WHERE id_category = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        
+
         // Exécution de la requête
         $pdoStatement->execute([$categoryId]);
 
@@ -91,31 +94,39 @@ class CategoryModel extends AbstractModel {
     /** 
      * Modifie une catégorie en base de données
      */
-    function editCategory(int $categoryId, string $title_category)
+    function editCategory(int $categoryId, string $title_category, string $image)
     {
         // Insertion des données dans la base de données
         $sql = 'UPDATE category 
-                SET title_category = ?
+                SET title_category = ?, image = ?
                 WHERE id_category = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        $pdoStatement->execute([$title_category, $categoryId]);
-
+        $pdoStatement->execute([$title_category, $image, $categoryId]);
     }
 
-     /**
+    /**
      * Supprime une catégorie à partir de son id
      * @param int $categoryId L'id de la catégorie à supprimer
      */
     function deleteCategory(int $categoryId)
     {
-       
+
         // Préparation de la requête SQL de suppression
         $sql = 'DELETE FROM category WHERE id_category = ?';
 
         $pdoStatement = self::$pdo->prepare($sql);
-        
+
         // Exécution de la requête
         $pdoStatement->execute([$categoryId]);
     }
 }
+
+// Jointure entre les tables
+$sql = 'SELECT id_category, title_category, product.id_category, id_category
+        FROM category
+        INNER JOIN product ON category.id_category = product.id_category';
+
+$sql = 'SELECT id_technic, title_technic
+        FROM technic
+        INNER JOIN product ON technic.id_technic = product.id_technic';
