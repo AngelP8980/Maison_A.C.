@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 
 /**
  * Démarre la session si la session n'est pas déjà démarrée
@@ -49,7 +50,7 @@ function fetchFlash(): ?string
 
     // Récupération du message flash s'il existe
     if (hasFlash()) {
-        
+
         // On récupère le message flash dans une variable
         $flashMessage = $_SESSION['flashbag'];
 
@@ -156,6 +157,58 @@ function asset(string $resourcePath): string
     return $url;
 }
 
+/**
+ * SLUG : supprime les caractères spéciaux
+ */
+function slugify($text)
+{
+    // Strip html tags
+    $text = strip_tags($text);
+    // Replace non letter or digits by -
+    $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+    // Transliterate
+    setlocale(LC_ALL, 'fr_FR.utf8');
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    // Remove unwanted characters
+    $text = preg_replace('~[^-\w]+~', '', $text);
+    // Trim
+    $text = trim($text, '-');
+    // Remove duplicate -
+    $text = preg_replace('~-+~', '-', $text);
+    // Lowercase
+    $text = strtolower($text);
+    // Check if it is empty
+    if (empty($text)) {
+        return 'n-a';
+    }
+    // Return result
+    return $text;
+}
+
+/**
+ * Récupère le type MIME d'un fichier
+ */
+function getFileMimeType(string $filePath): string
+{
+    // Create a Fileinfo resource
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+
+    if ($finfo) {
+        // Get the MIME type of the file
+        $mime_type = finfo_file($finfo, $filePath);
+
+        // Close the Fileinfo resource
+        finfo_close($finfo);
+
+        return $mime_type;
+    } else {
+        throw new Exception("Failed to open Fileinfo");
+    }
+}
+
+
+
+
 
 /**
  * Construction du chemin vers les ressources (CSS, JS, images, etc.)
@@ -165,7 +218,7 @@ function asset(string $resourcePath): string
 // }
 
 /**
- * Validation de l'envoie du formulaire de contact
+ * Validation de l'envoi du formulaire de contact
  */
 // function validate() {
 //     var isValid = true;

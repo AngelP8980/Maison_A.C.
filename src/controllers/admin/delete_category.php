@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 // Vérification de connexion de l'administrateur
-if (!isAdmin()){
+if (!isAdmin()) {
     echo ('Page introuvable');
     exit;
 }
@@ -30,6 +30,10 @@ if (!$category) {
 
 // Suppression de la categorie
 $categoryModel->deleteCategory($categoryId);
+
+if (file_exists('img/category/' . $category['image'])) {
+    unlink('img/category/' . $category['image']);
+}
 
 // Message flash
 addFlash('La catégorie a bien été supprimée');

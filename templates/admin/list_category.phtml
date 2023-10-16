@@ -23,7 +23,7 @@
                         <span><?= htmlspecialchars($category['title_category']); ?></span>
                     </td>
                     <td class="align-middle">
-                        <span><?= htmlspecialchars($category['image']); ?></span>
+                        <img class="imgList" src="<?= asset("img/category/" . $category['image']) ?>" alt="Image de la catégorie" width="75" height="90">
                     </td>
                     <td class="align-middle">
                         <a href=<?= "/admin/category/edit?id_category={$category['id_category']}" ?> data-mdb-toggle="tooltip" title="Modifier">

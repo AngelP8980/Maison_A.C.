@@ -1,35 +1,20 @@
  <!-- Main page category -->
 
-<main>
-    <!-- Récupération du titre de la catégorie choisie -->
-    <h1>
-        <?php
-        // On récupère le nom de la categorie en fonction de l'id passée dans l'url
-        $category = Category::find($id);
-            echo "Catégories : ".$category->name;
-            var_dump(Category::all());
-        foreach (Category::all() as $cat) {
-            if ($cat['id'] == $_GET["id"]){
-                echo "<p>" . $cat['name'];
-            } else {}
-        }                 
-        ?>
-    </h1>
+ <main>
+     <!-- Récupération du titre de la catégorie choisie -->
+     <h1>
 
-    <!-- Affichage du 1er produit de la catégorie -->
-    <section class="product01">
-        <?php
-        ?>
-    </section>
+     </h1>
 
-    <!-- Récupération du titre de l'article, de son prix -->
+     <!-- Affichage du 1er produit de la catégorie -->
+     <section class="product01">
+         <?php
+            ?>
+     </section>
 
-    <!-- Photos (slide) et bouton aperçu rapide -->
+     <!-- Récupération du titre de l'article, de son prix -->
+
+     <!-- Photos (slide) et bouton aperçu rapide -->
 
 
-</main>
-
-<!-- Affichage du message flash le cas échéant -->
-<?php if ($flashMessage): ?>
-    <div class="alert alert-success text-center pt-3 pb-4"><?=htmlspecialchars($flashMessage);?></div>
-<?php endif; ?>
+ </main>

@@ -5,102 +5,102 @@
     <h2 class="my-4">Ajouter un produit</h2>
 </div>
 
-<form action="<?=buildUrl('admin_add_product')?>" method="POST" >
+<form action="<?= buildUrl('admin_add_product') ?>" method="POST" enctype="multipart/form-data">
     <fieldset>
         <div class="p-4">
             <label for="title_product">Titre du produit</label>
-            <input class="form-control" type="text" name="title_product" id="title_product" value="<?=htmlspecialchars($title_product);?>">
-            <?php if (isset($errors['title_product'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_product']);?></p>
+            <input class="form-control" type="text" name="title_product" id="title_product" value="<?= htmlspecialchars($title_product); ?>">
+            <?php if (isset($errors['title_product'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['title_product']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">
-            <label class="image_product" for="file">Photo(s) du produit (png, jpg)</label>
-            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg" value="<?=htmlspecialchars($image);?>">
-            <?php if (isset($errors['image'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['image']);?></p>
+            <label class="image_product" for="file">Photo du produit (jpg, png, gif, svg,+xml, webp)</label>
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/gif, image/svg+xml, image/webp">
+            <?php if (isset($errors['image'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['image']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">
-            <label for="accessories">Accessoires fournis avec produit</label>
-            <textarea class="form-control" type="text-area" name="accessories" id="accessories" rows="4" cols="50" value="<?=htmlspecialchars($accessories ?? "");?>"></textarea>
-            <?php if (isset($errors['accessories'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['accessories'] ?? "");?></p>
+            <label for="accessories">Accessoires fournis avec le produit</label>
+            <textarea class="form-control" type="text-area" name="accessories" id="accessories" rows="4" cols="50" value="<?= htmlspecialchars($accessories ?? ""); ?>"></textarea>
+            <?php if (isset($errors['accessories'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['accessories'] ?? ""); ?></p>
             <?php endif; ?>
         </div>
-        
+
         <div class="p-4">
             <label for="title_category">Quelle catégorie pour ce produit ?</label>
-                <select name="category" id="category-select">
-                    <option value="">--Choisissez une catégorie--</option>             
-                        <?php foreach ($categories as $value){ ?>
-                        <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
-                            <option value=<?=$value['id_category']?>><?=htmlspecialchars($value['title_category'])?> </option>
-                    <?php }  ?>
-                </select>
-                    <?php if (isset($errors['category'])): ?>
-                        <p class="alert alert-danger"><?=htmlspecialchars($errors['category']);?></p>
-                <?php endif; ?>
+            <select name="category" id="category-select">
+                <option value="">--Choisissez une catégorie--</option>
+                <?php foreach ($categories as $value) { ?>
+                    <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
+                    <option value=<?= $value['id_category'] ?>><?= htmlspecialchars($value['title_category']) ?> </option>
+                <?php }  ?>
+            </select>
+            <?php if (isset($errors['category'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['category']); ?></p>
+            <?php endif; ?>
         </div>
         <div class="p-4">
             <label for="technic">Technique de fabrication utilisée</label>
-                <select name="technic" id="technic-select">
-                    <option value="">--Choisissez une technique--</option>
-                    <?php foreach ($technics as $value){ ?>
-                        <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
-                            <option value=<?=$value['id_technic']?>><?=htmlspecialchars($value['title_technic'])?> </option>
-                    <?php }  ?>
-                </select>
-                    <?php if (isset($errors['technic'])): ?>
-                    <p class="alert alert-danger"><?=htmlspecialchars($errors['technic']);?></p>
-                <?php endif; ?>                
-                </select>
+            <select name="technic" id="technic-select">
+                <option value="">--Choisissez une technique--</option>
+                <?php foreach ($technics as $value) { ?>
+                    <!-- le value de l'option sert à récupérer l'id dans le controllers pour plus tard lors de la validation du formulaire -->
+                    <option value=<?= $value['id_technic'] ?>><?= htmlspecialchars($value['title_technic']) ?> </option>
+                <?php }  ?>
+            </select>
+            <?php if (isset($errors['technic'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['technic']); ?></p>
+            <?php endif; ?>
+            </select>
         </div>
         <div class="p-4">
             <label for="price">Prix du produit</label>
-            <input class="form-control" type="number" name="price" id="price" value="<?=htmlspecialchars($price);?>">
-            <?php if (isset($errors['price'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['price']);?></p>
+            <input class="form-control" type="number" name="price" id="price" value="<?= htmlspecialchars($price); ?>">
+            <?php if (isset($errors['price'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['price']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">
             <label for="description">Description du produit</label>
-            <textarea class="form-control" type="text-area" name="description" id="description" rows="8" cols="50" value="<?=htmlspecialchars($description);?>"></textarea>
-            <?php if (isset($errors['description'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['description']);?></p>
+            <textarea class="form-control" type="text-area" name="description" id="description" rows="8" cols="50" value="<?= htmlspecialchars($description); ?>"></textarea>
+            <?php if (isset($errors['description'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['description']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">
             <label for="the_most">Les + du produit</label>
-            <textarea class="form-control" type="text-area" name="the_most" id="the_most" rows="8" cols="50" value="<?=htmlspecialchars($the_most);?>"></textarea>
-            <?php if (isset($errors['the_most'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['the_most']);?></p>
+            <textarea class="form-control" type="text-area" name="the_most" id="the_most" rows="8" cols="50" value="<?= htmlspecialchars($the_most); ?>"></textarea>
+            <?php if (isset($errors['the_most'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['the_most']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">
             <label for="features">Les caractéristiques du produit</label>
-            <textarea class="form-control" type="text-area" name="features" id="features" rows="8" cols="50" value="<?=htmlspecialchars($features);?>"></textarea>
-            <?php if (isset($errors['features'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['features']);?></p>
+            <textarea class="form-control" type="text-area" name="features" id="features" rows="8" cols="50" value="<?= htmlspecialchars($features); ?>"></textarea>
+            <?php if (isset($errors['features'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['features']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">
             <label for="dimensions">Les dimensions du produit</label>
-            <textarea class="form-control" type="text-area" name="dimensions" id="dimensions" rows="8" cols="50" value="<?=htmlspecialchars($dimensions);?>"></textarea>
-            <?php if (isset($errors['dimensions'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['dimensions']);?></p>
+            <textarea class="form-control" type="text-area" name="dimensions" id="dimensions" rows="8" cols="50" value="<?= htmlspecialchars($dimensions); ?>"></textarea>
+            <?php if (isset($errors['dimensions'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['dimensions']); ?></p>
             <?php endif; ?>
         </div>
         <div class="p-4">
             <label for="precision_description">Précisions sur le produit</label>
-            <textarea class="form-control" type="text-area" name="precision_description" id="precision_description" rows="5" cols="50" value="<?=htmlspecialchars($precision_description);?>"></textarea>
-            <?php if (isset($errors['precision_description'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['precision_description']);?></p>
+            <textarea class="form-control" type="text-area" name="precision_description" id="precision_description" rows="5" cols="50" value="<?= htmlspecialchars($precision_description); ?>"></textarea>
+            <?php if (isset($errors['precision_description'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['precision_description']); ?></p>
             <?php endif; ?>
         </div>
 
         <div class="p-2 text-center">
-        <input class="btn btn-primary" type="submit" value="Valider l'ajout du produit">
+            <input class="btn btn-primary" type="submit" value="Valider l'ajout du produit">
         </div>
     </fieldset>
 

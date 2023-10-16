@@ -35,7 +35,7 @@ if (!$product) {
 // avec les valeurs du produit à modifier
 $id = $product['id_product'];
 $title = $product['title_product'];
-$image = $product['image'];
+$filename = $product['image'];
 $accessories = $product['accessories'];
 $category = $product['id_category'];
 $technic = $product['id_technic'];
@@ -51,7 +51,7 @@ if (!empty($_POST)) {
 
     // On récupère les données du formulaire
     $title = trim($_POST['title_product']);
-    $image = $_POST['image'];
+    $image = $_FILES['image'];
     $accessories = trim($_POST['accessories']);
     $category = trim($_POST['id_category']);
     $technic = trim($_POST['id_technic']);
@@ -67,8 +67,17 @@ if (!empty($_POST)) {
     if (!$title) {
         $errors['title_product'] = 'Le champ "titre" est obligatoire';
     }
-    if (!$image) {
-        $errors['image'] = 'Le champ "image" est obligatoire';
+    if (array_key_exists('image', $_FILES) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+        $mimetype = getFileMimeType($_FILES['image']['tmp_name']);
+        // dd($mimetype);
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'];
+        if (!in_array($mimetype, $allowedMimeTypes)) {
+            $errors['image'] = 'Veuillez charger un fichier image valide (JPG, PNG, GIF, SVG, WEBP)';
+        } else {
+            if (filesize($_FILES['image']['tmp_name']) > MAX_UPLOADED_FILE_SIZE) {
+                $errors['image'] = 'Le fichier ne doit pas excéder 1Mo';
+            }
+        }
     }
     if (!$accessories) {
         $errors['accessories'] = 'Le champ "accessoires" est obligatoire';
@@ -100,16 +109,34 @@ if (!empty($_POST)) {
 
     // Si pas d'erreurs...
     if (empty($errors)) {
+        if (array_key_exists('image', $_FILES) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+            // suppression de l'image actuelle
+            if (file_exists('img/product/' . $filename)) {
+                unlink('img/product/' . $filename);
+            }
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $basename = pathinfo($_FILES['image']['name'], PATHINFO_FILENAME);
+            $basename = slugify($basename);
 
+            // ajout chaîne de caratères unique
+            $filename = $basename . sha1(uniqid(rand(), true)) . '.' . $extension;
+
+            // vérifie si le dossier d'enregistrement de l'image existe
+            if (!file_exists('img/product')) {
+                mkdir('./img/product/', 0777, true);
+            }
+            // enregistre l'image dans le bon dossier avec le bon nom
+            move_uploaded_file($_FILES['image']['tmp_name'], 'img/product/' . $filename);
+        }
         // Insertion du produit en base de données
-        $productModel->editProduct($productId, $title, $image, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description);
+        $productModel->editProduct($productId, $title, $filename, $accessories, $category, $technic, $price, $description, $the_most, $features, $dimensions, $precision_description);
 
         // Ajouter un message flash
-        addFlash('La produit a bien été modifié.');
+        addFlash('Le produit a bien été modifié.');
 
         // Redirection 
-        header('Location: ' . buildUrl('admin_list_product'));
-        exit;
+        // header('Location: ' . buildUrl('admin_list_product'));
+        // exit;
     }
 }
 

@@ -35,28 +35,55 @@ if (!$category) {
 // avec les valeurs de la catégorie à modifier
 $id = $category['id_category'];
 $title = $category['title_category'];
-$image = $category['image'];
+$filename = $category['image'];
 
 // Si le formulaire est soumis...
 if (!empty($_POST)) {
 
     // On récupère les données du formulaire
     $title = trim($_POST['title_category']);
-    $image = $_POST['image'];
+    $image = $_FILES['image'];
 
     // Validation des données
     if (!$title) {
         $errors['title_category'] = 'Le champ "titre" est obligatoire';
     }
-    if (!$image) {
-        $errors['image'] = 'Le champ "image" est obligatoire';
+    if (array_key_exists('image', $_FILES) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+        $mimetype = getFileMimeType($_FILES['image']['tmp_name']);
+        // dd($mimetype);
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'];
+        if (!in_array($mimetype, $allowedMimeTypes)) {
+            $errors['image'] = 'Veuillez charger un fichier image valide (JPG, PNG, GIF, SVG, WEBP)';
+        } else {
+            if (filesize($_FILES['image']['tmp_name']) > MAX_UPLOADED_FILE_SIZE) {
+                $errors['image'] = 'Le fichier ne doit pas excéder 1Mo';
+            }
+        }
     }
 
     // Si pas d'erreurs...
     if (empty($errors)) {
+        if (array_key_exists('image', $_FILES) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+            // suppression de l'image actuelle
+            if (file_exists('img/category/' . $filename)) {
+                unlink('img/category/' . $filename);
+            }
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $basename = pathinfo($_FILES['image']['name'], PATHINFO_FILENAME);
+            $basename = slugify($basename);
 
+            // ajout chaîne de caratères unique
+            $filename = $basename . sha1(uniqid(rand(), true)) . '.' . $extension;
+
+            // vérifie si le dossier d'enregistrement de l'image existe
+            if (!file_exists('img/category')) {
+                mkdir('./img/category/', 0777, true);
+            }
+            // enregistre l'image dans le bon dossier avec le bon nom
+            move_uploaded_file($_FILES['image']['tmp_name'], 'img/category/' . $filename);
+        }
         // Insertion de la catégorie en base de données
-        $categoryModel->editCategory($categoryId, $title, $image);
+        $categoryModel->editCategory($categoryId, $title, $filename);
 
         // Ajouter un message flash
         addFlash('La catégorie a bien été modifiée.');

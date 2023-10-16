@@ -21,6 +21,7 @@ class CategoryModel extends AbstractModel
         // Récupération du résultat 
         $category = $pdoStatement->fetch();
 
+        // Si aucune catégorie n'est trouvée, renvoyer un tableau vide
         if (!$category) {
             return [];
         }
@@ -121,12 +122,3 @@ class CategoryModel extends AbstractModel
         $pdoStatement->execute([$categoryId]);
     }
 }
-
-// Jointure entre les tables
-$sql = 'SELECT id_category, title_category, product.id_category, id_category
-        FROM category
-        INNER JOIN product ON category.id_category = product.id_category';
-
-$sql = 'SELECT id_technic, title_technic
-        FROM technic
-        INNER JOIN product ON technic.id_technic = product.id_technic';

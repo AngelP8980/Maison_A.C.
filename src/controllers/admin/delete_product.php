@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 // Vérification de connexion de l'administrateur
-if (!isAdmin()){
+if (!isAdmin()) {
     echo ('Page introuvable');
     exit;
 }
@@ -30,6 +30,10 @@ if (!$product) {
 
 // Suppression du produit
 $productModel->deleteProduct($productId);
+
+if (file_exists('img/product/' . $product['image'])) {
+    unlink('img/product/' . $product['image']);
+}
 
 // Message flash
 addFlash('Le produit a bien été supprimé');

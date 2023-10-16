@@ -5,7 +5,7 @@
     <h2 class="my-4">Modifier une catégorie</h2>
 </div>
 
-<form action="<?= buildUrl('admin_edit_category', ['id_category' => $categoryId]) ?>" method="POST">
+<form action="<?= buildUrl('admin_edit_category', ['id_category' => $categoryId]) ?>" method="POST" enctype="multipart/form-data">
     <fieldset>
         <div class="mt-4 p-5">
             <label for="title_category">Titre de la catégorie</label>
@@ -16,10 +16,11 @@
         </div>
         <div class="p-4">
             <label class="image_category" for="image">Photo de la catégorie</label>
-            <input type="file" name="image" id="image" accept="image/png, image/jpeg" multiple value="<?= htmlspecialchars($image); ?>">
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/gif, image/svg+xml, image/webp">
             <?php if (isset($errors['image'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['image']); ?></p>
             <?php endif; ?>
+            <img class="imgList" src="<?= asset('img/category/' . $filename) ?>" alt="Image de la catégorie" width="75" height="90">
         </div>
         <div class="p-2 text-center">
             <input class="btn btn-primary" type="submit" value="Valider la modification de la catégorie">

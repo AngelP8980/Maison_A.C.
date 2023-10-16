@@ -17,8 +17,8 @@
                 <th scope="col">Caractéristiques</th>
                 <th scope="col">Dimensions</th>
                 <th scope="col">Précisions</th>
-                <th scope="col">N° Catégorie</th>
-                <th scope="col">N° Technique</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Technique</th>
 
             </tr>
         </thead>
@@ -33,7 +33,7 @@
                         <span><?= htmlspecialchars($product['title_product']); ?></span>
                     </td>
                     <td class="align-middle">
-                        <span><?= htmlspecialchars($product['image']); ?></span>
+                        <img class="imgList" src="<?= asset("img/product/" . $product['product_image']) ?>" alt="Image du produit" width="75" height="90">
                     </td>
                     <td class="align-middle">
                         <span><?= htmlspecialchars($product['accessories']); ?></span>
@@ -57,10 +57,10 @@
                         <span><?= htmlspecialchars($product['precision_description']); ?></span>
                     </td>
                     <td class="align-middle">
-                        <span><?= htmlspecialchars($product['id_category']); ?></span>
+                        <span><?= htmlspecialchars($product['title_category']); ?></span>
                     </td>
                     <td class="align-middle">
-                        <span><?= htmlspecialchars($product['id_technic']); ?></span>
+                        <span><?= htmlspecialchars($product['title_technic']); ?></span>
                     </td>
                     <td class="align-middle">
                         <a href=<?= "/admin/product/edit?id_product={$product['id_product']}" ?> data-mdb-toggle="tooltip" title="Modifier">

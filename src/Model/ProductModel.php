@@ -60,7 +60,9 @@ class ProductModel extends AbstractModel
     function getProductAll(): array
     {
         // Préparation de la requête
-        $sql = 'SELECT * FROM product';
+        $sql = 'SELECT *, P.image AS product_image FROM product AS P
+                INNER JOIN category AS C ON C.id_category = P.id_category
+                INNER JOIN technic AS T ON T.id_technic = P.id_technic';
         $pdoStatement = self::$pdo->prepare($sql);
 
         // Exécution de la requête
@@ -83,7 +85,7 @@ class ProductModel extends AbstractModel
     {
 
         // Préparation de la requête de sélection
-        $sql = 'SELECT title_product, image, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description
+        $sql = 'SELECT id_product, title_product, image, accessories, id_category, id_technic, price, description, the_most, features, dimensions, precision_description
                 FROM product AS P
                 WHERE id_product = ?';
 

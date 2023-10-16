@@ -157,6 +157,9 @@ a {
 }
 
 /*MAIN CATEGORY*/
+.imgList {
+  max-width: 1%;
+}
 
 /*MAIN PRODUCT*/
 
@@ -369,7 +372,7 @@ h4 {
     text-align: center;
   }
   .imgAccueil {
-    background-image: url(img/imgAccueilMobile.jpg);
+    background-image: url("img/imgAccueilMobile.jpg");
     background-size: cover;
     width: 800px;
     opacity: 40%;

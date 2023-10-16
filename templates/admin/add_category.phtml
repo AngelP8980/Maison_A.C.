@@ -5,7 +5,7 @@
     <h2 class="my-4">Ajouter une catégorie</h2>
 </div>
 
-<form action="<?= buildUrl('admin_add_category') ?>" method="POST">
+<form action="<?= buildUrl('admin_add_category') ?>" method="POST" enctype="multipart/form-data">
     <fieldset>
         <div class="mt-4 p-5">
             <label for="title_category">Titre de la catégorie</label>
@@ -15,8 +15,8 @@
             <?php endif; ?>
         </div>
         <div class="p-4">
-            <label class="image_product" for="file">Photo(s) de la catégorie (png, jpg)</label>
-            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg" value="<?= htmlspecialchars($image); ?>">
+            <label class="image_product" for="file">Photo de la catégorie (jpg, png, gif, svg+xml, webp)</label>
+            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/gif, image/svg+xml, image/webp">
             <?php if (isset($errors['image'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['image']); ?></p>
             <?php endif; ?>
