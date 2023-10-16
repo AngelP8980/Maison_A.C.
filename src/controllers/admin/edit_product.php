@@ -135,8 +135,8 @@ if (!empty($_POST)) {
         addFlash('Le produit a bien été modifié.');
 
         // Redirection 
-        // header('Location: ' . buildUrl('admin_list_product'));
-        // exit;
+        header('Location: ' . buildUrl('admin_list_product'));
+        exit;
     }
 }
 
