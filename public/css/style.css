@@ -20,6 +20,16 @@ body {
   justify-content: space-around;
   text-decoration: none !important;
 }
+.sitePublic {
+  font-family: "Overlock SC", cursive;
+  font-size: 34px;
+  color: #08cfa4;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none !important;
+}
 /*HEADER NAV*/
 .headerNav {
   display: flex;

@@ -1,20 +1,25 @@
  <!-- Main page category -->
 
- <main>
-     <!-- Récupération du titre de la catégorie choisie -->
-     <h1>
 
-     </h1>
+ <!-- Récupération du titre de la catégorie choisie -->
+ <h1>
+     <?= $category['title_categorie']; ?>
+ </h1>
 
-     <!-- Affichage du 1er produit de la catégorie -->
-     <section class="product01">
-         <?php
-            ?>
-     </section>
+ <!-- Affichage du 1er produit de la catégorie -->
+ <section class="product01">
+     <?php
+        // On récupère le nom de la categorie en fonction de l'id passée dans l'url
 
-     <!-- Récupération du titre de l'article, de son prix -->
+        foreach ($categories as $category) {
+            $categoryId = $category['id_category'];
+            $url = buildUrl('category', ['id => $categoryId']);
 
-     <!-- Photos (slide) et bouton aperçu rapide -->
+            echo '<a href="' . $url . '">' . $category['nom'] . '</a><br>';
+        } ?>
 
+ </section>
 
- </main>
+ <!-- Récupération du titre de l'article, de son prix -->
+
+ <!-- Photos (slide) et bouton aperçu rapide -->

@@ -54,7 +54,6 @@ if (!empty($_POST)) {
         $errors['title_category'] = 'Il existe déjà une catégorie associée à ce titre';
     }
 
-
     // Si aucune erreur... 
     if (empty($errors)) {
         $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
