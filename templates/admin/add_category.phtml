@@ -14,14 +14,14 @@
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['title_category']); ?></p>
             <?php endif; ?>
         </div>
-        <div class="p-4">
+        <div class="mt-4 p-5">
             <label class="image_product" for="file">Photo de la catégorie (jpg, png, gif, svg+xml, webp)</label>
             <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/gif, image/svg+xml, image/webp">
             <?php if (isset($errors['image'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['image']); ?></p>
             <?php endif; ?>
         </div>
-        <div class="p-2 text-center">
+        <div class="mt-4 p-5 text-center">
             <input class="btn btn-primary" type="submit" value="Valider l'ajout de la catégorie">
         </div>
     </fieldset>

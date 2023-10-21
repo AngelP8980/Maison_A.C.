@@ -1,52 +1,51 @@
  <!-- Main page contact -->
 
  <main class="bg-contact">
-    <h1 class="formTitle">Formulaire de Contact</h1>
+     <h1 class="formTitle">Formulaire de Contact</h1>
 
 
-    <!-- Affichage du formulaire de contact -->
-    <div class="form-contact-card">
-        <form  action="contact.php" method="post">
-            <input class="form-contact-input" type="text" name="lastname" id="lastname" placeholder="Votre nom"><br /><br />
-            <input class="form-contact-input" type="text" name="firstname" id="firstname" placeholder="Votre prénom"><br /><br />
-            <input class="form-contact-input" type="mail" name="email" id="email" placeholder="Votre e-mail"><br /><br />
-            <input class="form-contact-input" type="text" name="phone" id="phone" placeholder="Votre n° de téléphone"><br /><br />
-            <input class="form-contact-input-message" type="textarea" name="message" id="message" placeholder="Votre message"><br /><br />
-            
-            <div class="div-form-send">
-                <input class="form-send" type="submit" name="send" value="Envoyer le message">
-            </div>
-            
-            <div id="statusMessage"> 
-                <?php if (!empty($db_msg)) { ?>
-                    <p class='<?php echo $type_db_msg; ?>Message'>
-                        <?php echo $db_msg; ?>
-                    </p>
-                    <?php } ?>
-                    <?php if (!empty($mail_msg)) { ?>
-                        <p class='<?php echo $type_mail_msg; ?>Message'>
-                            <?php echo $mail_msg; ?>
-                        </p>
-                        <?php } ?>
-                    </div>             
-    </div>
-        
+     <!-- Affichage du formulaire de contact -->
+     <div class="form-contact-card">
+         <form action="contact.php" method="post">
+             <input class="form-contact-input" type="text" name="lastname" id="lastname" placeholder="Votre nom"><br /><br />
+             <input class="form-contact-input" type="text" name="firstname" id="firstname" placeholder="Votre prénom"><br /><br />
+             <input class="form-contact-input" type="mail" name="email" id="email" placeholder="Votre e-mail"><br /><br />
+             <input class="form-contact-input" type="text" name="phone" id="phone" placeholder="Votre n° de téléphone"><br /><br />
+             <input class="form-contact-input-message" type="textarea" name="message" id="message" placeholder="Votre message"><br /><br />
 
-    <!-- icônes Appelez-nous, Ecrivez-nous, Atelier situé en Provence -->
-    <section class="section-bas">
-        <div class="section-bas-div">
-            <img class="section-bas-img" src="img/allo.png" alt="Icône appel téléphonique">
-            <h4>Appelez-nous <br>07.70.32.19.28</h4>
-        </div>
-        <div class="section-bas-div">
-            <img class="section-bas-img" src="img/mail.png" alt="Icône email">
-            <h4>Ecrivez-nous <br>maison-ac@gmail.com</h4>
-        </div>
-        <div class="section-bas-div">
-            <img class="section-bas-img" src="img/localisation.png" alt="Icône de localisation">
-            <h4>Atelier situé <br>en Provence</h4>
-        </div>
-    </section>
+             <div class="div-form-send">
+                 <input class="form-send" type="submit" name="send" value="Envoyer le message">
+             </div>
 
-</main>
+             <div id="statusMessage">
+                 <?php if (!empty($db_msg)) { ?>
+                     <p class='<?php echo $type_db_msg; ?>Message'>
+                         <?php echo $db_msg; ?>
+                     </p>
+                 <?php } ?>
+                 <?php if (!empty($mail_msg)) { ?>
+                     <p class='<?php echo $type_mail_msg; ?>Message'>
+                         <?php echo $mail_msg; ?>
+                     </p>
+                 <?php } ?>
+             </div>
+     </div>
 
+
+     <!-- icônes Appelez-nous, Ecrivez-nous, Atelier situé en Provence -->
+     <section class="section-bas">
+         <div class="section-bas-div">
+             <img class="section-bas-img" src="img/allo.png" alt="Icône appel téléphonique">
+             <h4>Appelez-nous <br>07.70.28.19.32</h4>
+         </div>
+         <div class="section-bas-div">
+             <img class="section-bas-img" src="img/mail.png" alt="Icône email">
+             <h4>Ecrivez-nous <br>maison-ac@gmail.com</h4>
+         </div>
+         <div class="section-bas-div">
+             <img class="section-bas-img" src="img/localisation.png" alt="Icône de localisation">
+             <h4>Atelier situé <br>en Provence</h4>
+         </div>
+     </section>
+
+ </main>

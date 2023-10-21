@@ -8,6 +8,12 @@ if (!isAdmin()) {
 
 // Import de classes
 use App\Model\ProductModel;
+use App\Model\TechnicModel;
+use App\Model\CategoryModel;
+
+$productModel = new ProductModel();
+$categoryModel = new CategoryModel();
+$technicModel = new TechnicModel();
 
 // Récupération et validation de l'id du produit de l'URL (chaîne de requête)
 if (!array_key_exists('id_product', $_GET) || !ctype_digit($_GET['id_product'])) {
@@ -22,7 +28,6 @@ $productId = $_GET['id_product'];
 $errors = []; // Tableau qui contiendra les erreurs
 
 // Sélection du produit à modifier dans la base de données à partir de son id
-$productModel = new ProductModel();
 $product = $productModel->getOneProductById($productId);
 
 // le produit existe-t-il bien ?
@@ -30,6 +35,10 @@ if (!$product) {
     echo 'Produit introuvable';
     exit;
 }
+
+$categories = $categoryModel->getCategoryAll();
+$technics = $technicModel->getTechnicAll();
+
 
 // Variables qui vont permettre de pré remplir le formulaire
 // avec les valeurs du produit à modifier

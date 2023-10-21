@@ -14,7 +14,8 @@ class ProductModel extends AbstractModel
     function getProductByTitle(string $title_product): array
     {
         // Préparation de la requête
-        $sql = 'SELECT * FROM product WHERE title_product = ?';
+        $sql = 'SELECT * FROM product 
+                WHERE title_product = ?';
         $pdoStatement = self::$pdo->prepare($sql);
 
         // Exécution de la requête
@@ -102,6 +103,30 @@ class ProductModel extends AbstractModel
         }
 
         return $product;
+    }
+
+    /**
+     * Sélection des produits par l'id de leur catégorie
+     */
+    function getProductsByCategoryId(int $categoryId): array
+    {
+
+        // Préparation de la requête
+        $sql = 'SELECT *, P.image AS product_image 
+                FROM product AS P
+                WHERE P.id_category = ?';
+
+        $pdoStatement = self::$pdo->prepare($sql);
+
+        // Exécution de la requête
+        $pdoStatement->execute([$categoryId]);
+
+        // Récupération du résultat 
+        $products = $pdoStatement->fetchAll();
+        if (!$products) {
+            return [];
+        }
+        return $products;
     }
 
     /** 

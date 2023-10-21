@@ -1,25 +1,26 @@
  <!-- Main page category -->
 
-
  <!-- Récupération du titre de la catégorie choisie -->
- <h1>
-     <?= $category['title_categorie']; ?>
+ <h1 class="category-h1">
+     <?= $category['title_category']; ?>
  </h1>
 
- <!-- Affichage du 1er produit de la catégorie -->
- <section class="product01">
+ <!-- Affichage des produits de la catégorie -->
+ <main class="category-main">
+     <?php foreach ($products as $product) { ?>
+         <div class="category-card">
+             <a href="<?= buildUrl('product', ['id_product' => intval($product['id_product'])]); ?>">
+                 <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
+                 <h3><?= htmlspecialchars($product['title_product']) ?></h3>
+                 <h5><?= htmlspecialchars($product['accessories']) ?></h5>
+                 <p class="category-price"><?= $product['price'] ?> €</p>
+                 <button class="btn-preview"><i class="fa-solid fa-magnifying-glass"></i> Aperçu rapide</button>
+             </a><br>
+             <div>
+                 <button id="prev-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                 <button id="next-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-right"></i></i></button>
+             </div>
+         </div>
      <?php
-        // On récupère le nom de la categorie en fonction de l'id passée dans l'url
-
-        foreach ($categories as $category) {
-            $categoryId = $category['id_category'];
-            $url = buildUrl('category', ['id => $categoryId']);
-
-            echo '<a href="' . $url . '">' . $category['nom'] . '</a><br>';
         } ?>
-
- </section>
-
- <!-- Récupération du titre de l'article, de son prix -->
-
- <!-- Photos (slide) et bouton aperçu rapide -->
+ </main>

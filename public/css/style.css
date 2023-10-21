@@ -6,6 +6,11 @@ body {
   display: flex;
 }
 .logo {
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+}
+.logo-admin {
   width: 30%;
   height: 30%;
   margin-left: 10px;
@@ -167,9 +172,69 @@ a {
 }
 
 /*MAIN CATEGORY*/
-.imgList {
-  max-width: 1%;
+.category-h1 {
+  font-family: "Overlock SC", cursive;
+  font-size: 40px;
+  text-align: center;
+  color: #4e3452 !important;
+  background-color: #e7e1e1;
+  text-decoration: underline;
+  margin: auto;
+  padding: 30px;
 }
+.category-main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #e7e1e1;
+  padding: 30px;
+  font-family: "Bellota";
+  color: #000000 !important;
+}
+.category-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #d3caca;
+  padding: 20px 295px 20px 30px;
+  color: #000000 !important;
+}
+.img-list {
+}
+.category-price {
+  color: #4e3452 !important;
+  font-weight: bold;
+  font-size: 30px;
+}
+.btn-preview {
+  border: none;
+  border-radius: 25px;
+  background-color: #d9d9d9;
+  padding: 5px 15px 5px 20px;
+  font-family: "Bellota";
+  display: flex;
+  align-items: center;
+}
+.prev-next-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #d3caca;
+  color: white;
+  border: none;
+  font-size: 30px;
+}
+/* #prev-btn {
+  position: absolute;
+  top: 8%;
+  left: -10%;
+  z-index: 1;
+}
+#prev-btn {
+  position: absolute;
+  top: 8%;
+  left: -10%;
+  z-index: 1;
+} */
 
 /*MAIN PRODUCT*/
 

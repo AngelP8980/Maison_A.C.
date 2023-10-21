@@ -5,18 +5,18 @@
     <h2 class="my-4">Ajouter une technique</h2>
 </div>
 
-<form action="<?=buildUrl('admin_add_technic')?>" method="POST" >
+<form action="<?= buildUrl('admin_add_technic') ?>" method="POST">
     <fieldset>
         <div class="mt-4 p-5">
             <label for="title_technic">Titre de la technique</label>
-            <input class="form-control" type="text" name="title_technic" id="title_technic" value="<?=htmlspecialchars($title_technic);?>">
-            <?php if (isset($errors['title_technic'])): ?>
-                <p class="alert alert-danger"><?=htmlspecialchars($errors['title_technic']);?></p>
+            <input class="form-control" type="text" name="title_technic" id="title_technic" value="<?= htmlspecialchars($title_technic); ?>">
+            <?php if (isset($errors['title_technic'])) : ?>
+                <p class="alert alert-danger"><?= htmlspecialchars($errors['title_technic']); ?></p>
             <?php endif; ?>
         </div>
-        <div class="p-2 text-center">
+        <div class="mt-4 p-5 text-center">
             <input class="btn btn-primary" type="submit" value="Valider l'ajout de la technique">
         </div>
     </fieldset>
-    
+
 </form>
