@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+/*HEADER*/
+.logo-admin {
+  width: 30%;
+  height: 30%;
+  margin-left: 10px;
+}
+.dashboardTitle {
+  font-family: "Overlock SC", cursive;
+  font-size: 40px;
+  color: #b308cf;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none !important;
+}
+.sitePublic {
+  font-family: "Overlock SC", cursive;
+  font-size: 34px;
+  color: #08cfa4;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none !important;
+}
+/*NAV*/
+.navbar {
+}
+.nav-disconnect {
+  color: #d40606;
+  font-family: "Overlock Bold 700", cursive;
+  font-size: 24px;
+  filter: drop-shadow(5px 2px 2px #676767);
+}
+a {
+  text-decoration: none !important;
+  pointer-events: fill;
+}
+
+/***/
+/*RESPONSIVE DESIGN*/
+@media screen and (max-width: 360px) {
+  .headerLogo {
+    flex-direction: column;
+  }
+  .header {
+    height: auto;
+  }
+  .logo {
+    width: 200% !important;
+    position: absolute;
+    margin: 10px;
+  }
+  .dashboardTitle,
+  .sitePublic {
+    margin-top: 20px;
+    font-size: 100% !important;
+    text-align: center;
+  }
+  .navbar {
+    font-size: 100%;
+    text-align: center;
+    flex-direction: column-reverse;
+  }
+  .navbar-collapse {
+  }
+  .nav-disconnect {
+    font-size: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 1200px) {
+}

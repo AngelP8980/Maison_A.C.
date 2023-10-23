@@ -24,7 +24,7 @@
         </div>
         <div class="mt-4 p-5">
             <label for="accessories">Accessoires fournis avec le produit</label>
-            <input class="form-control" type="text" name="accessories" id="accessories" value="<?= htmlspecialchars($accessories); ?>"></input>
+            <textarea class="form-control" name="accessories" id="accessories"> <?= htmlspecialchars($accessories); ?></textarea>
             <?php if (isset($errors['accessories'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['accessories']); ?></p>
             <?php endif; ?>
@@ -76,28 +76,28 @@
         </div>
         <div class="mt-4 p-5">
             <label for="the_most">Les + du produit</label>
-            <input class="form-control" type="text-area" name="the_most" id="the_most" value="<?= htmlspecialchars($the_most); ?>">
+            <textarea class="form-control" name="the_most" id="the_most"><?= htmlspecialchars($the_most); ?></textarea>
             <?php if (isset($errors['the_most'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['the_most']); ?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
             <label for="features">Les caractéristiques du produit</label>
-            <input class="form-control" type="text-area" name="features" id="features" value="<?= htmlspecialchars($features); ?>">
+            <textarea class="form-control" name="features" id="features"><?= htmlspecialchars($features); ?></textarea>
             <?php if (isset($errors['features'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['features']); ?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
             <label for="dimensions">Les dimensions du produit</label>
-            <input class="form-control" type="text-area" name="dimensions" id="dimensions" value="<?= htmlspecialchars($dimensions); ?>">
+            <textarea class="form-control" name="dimensions" id="dimensions"><?= htmlspecialchars($dimensions); ?></textarea>
             <?php if (isset($errors['dimensions'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['dimensions']); ?></p>
             <?php endif; ?>
         </div>
         <div class="mt-4 p-5">
             <label for="precision_description">Précisions sur le produit</label>
-            <input class="form-control" type="text-area" name="precision_description" id="precision_description" value="<?= htmlspecialchars($precision_description); ?>">
+            <textarea class="form-control" name="precision_description" id="precision_description"><?= htmlspecialchars($precision_description); ?></textarea>
             <?php if (isset($errors['precision_description'])) : ?>
                 <p class="alert alert-danger"><?= htmlspecialchars($errors['precision_description']); ?></p>
             <?php endif; ?>

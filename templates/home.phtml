@@ -2,13 +2,14 @@
     <main class="main-home">
         <h1 class="homeTitle">Bienvenu dans la boutique de la Maison A.C. !</h1>
         <div class="container-home">
-            <img class="imgAccueil" src="img/imgAccueil.jpg" alt="Image d'accueil">
+            <img class="imgAccueil" srcset="img/imgAccueil.jpg 1900w, img/imgAccueilMobile.jpg 360w" sizes="(max-width: 576px) 360px, (max-width: 768px) 540px, 700px" alt="Image d'accueil">
             <div class="text-home">
                 <p class="p-1">Angélique Chevalier vous propose une collection d'articles élégants et originaux confectionnés avec amour dans son atelier en Provence.</p>
                 <p class="p-2">Pièces uniques, idées cadeaux, accessoires ou encore envie de chiffons et de jolies choses ?</p>
                 <p class="p-3">Venez explorer l'univers créatif de la Maison A.C. Vous y trouverez harmonie d'élégance et de simplicité, authenticité et délicatesse mais aussi enchantement féérique et un brin de mignonnerie !</p>
-                <div class="slider">
+                <p class="p-4">Bon voyage !</p>
 
+                <div class="slider">
                     <div class="slider-layout">
                         <figure class="slider-figure">
                             <img class="slider-picture" src="img/category/01-roses75cacf9d83ec4c02ec3a64aa49bda2112bb0ecf3.jpg" alt="Image d'un produit">
@@ -106,7 +107,6 @@
                     </div>
 
                 </div>
-                <p class="p-4">Bon voyage !</p>
             </div>
         </div>
 
@@ -115,3 +115,4 @@
 
 
     <script src="<?= asset('js/slider.js') ?>"></script>
+    <script src="<?= asset('js/slider-product.js') ?>"></script>
