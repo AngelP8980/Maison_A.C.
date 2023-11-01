@@ -47,11 +47,11 @@
 }
 
 .prev {
-  left: 10px;
-  padding: 100px;
+  left: 0px;
+  padding: 50px;
 }
 
 .next {
   right: 0px;
-  padding: 100px;
+  padding: 50px;
 }

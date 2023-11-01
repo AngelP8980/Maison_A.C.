@@ -35,38 +35,38 @@
 
 <body>
     <!-- Header -->
-    <header class="headerLogo">
+    <header class="header__logo">
         <a href="<?= buildUrl('home') ?>">
             <img class="logo" src="img/logo.png" alt="Logo Maison A.C.">
         </a>
-
-        <!-- NavBar -->
-        <!-- MODE CONNECTE -->
-        <nav class="headerNav">
-            <?php if (isConnected()) : ?>
-                <a class="nav-disconnect" href="<?= buildUrl('logout') ?>">
-                    Déconnexion
-                </a>
-                <a class="navadmin" href="<?= buildUrl('admin') ?>">
-                    Dashboard administrateur
-                </a>
-            <?php else : ?>
-                <!-- MODE NON CONNECTE -->
-                <a class="navconnect" href="<?= buildUrl('signup') ?>">
-                    Créer un compte
-                </a>
-                <a href="<?= buildUrl('login') ?>" class="aId">
-                    S'identifier
-                </a>
-            <?php endif; ?>
-            <a class="navconnect" href="/">Panier</a>
-            <a class="navconnect" href="/">
-                <i class="fa-solid fa-magnifying-glass"></i> Rechercher</a>
-        </nav>
     </header>
 
+    <!-- NavBar -->
+    <!-- MODE CONNECTE -->
+    <nav class="header__nav">
+        <?php if (isConnected()) : ?>
+            <a class="header__nav--disconnect" href="<?= buildUrl('logout') ?>">
+                Déconnexion
+            </a>
+            <a class="header__nav--admin" href="<?= buildUrl('admin') ?>">
+                Dashboard administrateur
+            </a>
+        <?php else : ?>
+            <!-- MODE NON CONNECTE -->
+            <a class="header__nav--connect" href="<?= buildUrl('signup') ?>">
+                Créer un compte
+            </a>
+            <a href="<?= buildUrl('login') ?>" class="aId">
+                S'identifier
+            </a>
+        <?php endif; ?>
+        <a class="header__nav--connect" href="/">Panier</a>
+        <a class="header__nav--connect" href="/">
+            <i class="fa-solid fa-magnifying-glass"></i> Rechercher</a>
+    </nav>
+
     <!-- NavBar du menu -->
-    <nav class="navBarMenu">
+    <nav class="header__nav--menu">
         <a href="<?= buildUrl('catalog') ?>">Catalogue</a>
         <a href="<?= buildUrl('home') ?>">La Maison</a>
         <a href="<?= buildUrl('contact') ?>">Contact</a>

@@ -62,8 +62,8 @@ if (!empty($_POST)) {
     $title = trim($_POST['title_product']);
     $image = $_FILES['image'];
     $accessories = trim($_POST['accessories']);
-    $category = trim($_POST['id_category']);
-    $technic = trim($_POST['id_technic']);
+    $id_category = trim($_POST['id_category']);
+    $id_technic = trim($_POST['id_technic']);
     $price = trim($_POST['price']);
     $description = trim($_POST['description']);
     $the_most = trim($_POST['the_most']);

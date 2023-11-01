@@ -9,17 +9,21 @@
  <main class="category-main">
      <?php foreach ($products as $product) { ?>
          <div class="category-card">
-             <a href="<?= buildUrl('product', ['id_product' => intval($product['id_product'])]); ?>">
-                 <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
+             <div>
+
+                 <a href="<?= buildUrl('product', ['id_product' => intval($product['id_product'])]); ?>">
+                     <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
+             </div>
+             <div class="category-card-text">
                  <h3><?= htmlspecialchars($product['title_product']) ?></h3>
                  <h5><?= htmlspecialchars($product['accessories']) ?></h5>
                  <p class="category-price"><?= $product['price'] ?> €</p>
                  <button class="btn-preview"><i class="fa-solid fa-magnifying-glass"></i> Aperçu rapide</button>
-             </a><br>
-             <div>
-                 <button id="prev-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                 <button id="next-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-right"></i></i></button>
+                 </a><br>
              </div>
+
+             <!-- <button id="prev-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                 <button id="next-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-right"></i></i></button> -->
          </div>
      <?php
         } ?>

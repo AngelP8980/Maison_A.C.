@@ -35,7 +35,7 @@ if (file_exists('img/category/' . $category['image'])) {
     unlink('img/category/' . $category['image']);
 }
 
-// Message flash
+// Message flash : future amélioration : afficher le message en JS
 addFlash('La catégorie a bien été supprimée');
 
 // retour JS

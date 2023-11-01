@@ -1,43 +1,57 @@
  <!-- Main page product -->
 
  <!-- Récupération du titre de la catégorie choisie -->
- <h1 class="category-h1">
+ <h1 class="product-h1">
      <?= $product['title_product']; ?>
  </h1>
 
  <!-- Affichage du produit -->
- <main class="category-main">
-     <div class="category-card">
-         <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
+ <main class="product-main">
+     <div class="product-card">
+         <img class="product-img" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
 
-         <h3><?= htmlspecialchars($product['title_product']) ?></h3>
-         <h5><?= htmlspecialchars($product['accessories']) ?></h5>
-         <p class="category-price"><?= $product['price'] ?> €</p>
-         <select name="number" id=""></select>
-         <button class="">Ajouter au panier</button>
-         <p>Fabrication artisanale réalisée par Angélique Chevalier au sein de l’atelier de la Maison A.C.</p>
+         <div class="product-mini-description">
+             <h3><?= htmlspecialchars($product['title_product']) ?></h3>
+             <h5><?= nl2br(htmlspecialchars($product['accessories'])) ?></h5>
+             <p class="product-price"><?= $product['price'] ?> €</p>
+             <div class="add-basket">
 
-         <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
-         <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
-         <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
-
-         <div>
-             <img src="img/livraison.png" alt="Icône de livraison">
-             <p>Livraison rapide</p>
-             <img src="img/paiement.png" alt="Icône de paiement">
-             <p>Paiement sécurisé</p>
-             <img src="img/coeur.png" alt="Icône de création unique">
-             <p>Création unique</p>
+                 <select name="quantity" id=""></select>
+                 <button class="btn-add-basket">Ajouter au panier</button>
+             </div>
+             <p class="homemade">Fabrication artisanale réalisée par Angélique Chevalier au sein de l’atelier de la Maison A.C.</p>
          </div>
 
-         <p class=""><?= $product['description'] ?></p>
-         <p class=""><?= $product['the_most'] ?></p>
-         <p class=""><?= $product['features'] ?></p>
-         <p class=""><?= $product['dimensions'] ?></p>
-         <p class=""><?= $product['precision_description'] ?></p>
-         <div>
-             <button id="prev-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-left"></i></button>
-             <button id="next-btn" class="prev-next-btn"><i class="fa-solid fa-chevron-right"></i></i></button>
+         <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
+         <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
+         <img class="img-list" src="<?= asset('img/product/' . $product['image']) ?>" alt="Image du produit" width="220px" height="300px">
+
+         <div class="product-param">
+             <div class="delivery">
+                 <img src="img/livraison.png" alt="Icône de livraison">
+                 <p>Livraison rapide</p>
+             </div>
+             <div class="delivery">
+                 <img class="payment" src="img/paiement.png" alt="Icône de paiement">
+                 <p>Paiement sécurisé</p>
+             </div>
+             <div class="delivery">
+                 <img class="unique-creation" src="img/coeur.png" alt="Icône de création unique">
+                 <p>Création unique</p>
+             </div>
+         </div>
+
+         <div class="product-text">
+             <p class="product-description"><?= nl2br($product['description']) ?></p>
+             <p class="product-most"><strong>Les plus : </strong><br> <?= nl2br($product['the_most']) ?></p>
+             <p class="product-features"><strong>Caractéristiques :</strong> <br> <?= nl2br($product['features']) ?></p>
+             <p class="product-dimensions"><strong>Dimensions :</strong> <br> <?= nl2br($product['dimensions']) ?></p>
+             <p class="product-precision"><?= nl2br($product['precision_description']) ?></p>
+         </div>
+
+         <div class="prev-next-btn">
+             <button id="prev-btn" class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+             <button id="next-btn" class="next-btn"><i class="fa-solid fa-chevron-right"></i></i></button>
          </div>
      </div>
      <?php
